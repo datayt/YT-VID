@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Science | Mechanical Engineer</title>
+    <link rel="stylesheet" href="stylesheets - Copy.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header" id="mainHeader">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h2>Creative <span>Science</span></h2>
+                </div>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                <nav class="main-nav" id="nav-menu">
+                    <ul>
+                        <li><a href="#home" class="active">Home</a></li>
+                        <li><a href="#bg-video">Showcase</a></li>
+                        <li><a href="#photos">Photos</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#videos">Videos</a></li>
+                        <li><a href="#feedback">Feedback</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <span class="hero-subtitle">Mechanical Engineer</span>
+                <h1 class="hero-title">Shivam <span>Maurya</span></h1>
+                <h3>I'm a <span class="typed-text"></span></h3>
+                <p>I enjoy creating interesting DIY projects. Most of my videos have to do with electronics and mechanics.</p>
+                <div class="hero-social">
+                    <a href="https://www.facebook.com/creativescienceyt/" target="_blank"><i class='bx bxl-facebook-circle'></i></a>
+                    <a href="https://www.instagram.com/_creative_science/" target="_blank"><i class='bx bxl-instagram-alt'></i></a>
+                    <a href="https://www.youtube.com/@CreativeScienceOfficial" target="_blank"><i class='bx bxl-youtube'></i></a>
+                </div>
+                <a href="#photos" class="btn btn-light">More About Me</a>
+            </div>
+            <div class="hero-image">
+                <img src="Untitled_design-removebg-preview.png.png" alt="Shivam Maurya">
+            </div>
+        </div>
+    </section>
+
+    <!-- SHOWCASE VIDEO -->
+    <section id="bg-video" class="bg-video-section">
+        <div class="video-wrapper">
+            <video id="myVideo" class="bg-video-local" muted playsinline loop preload="metadata">
+                <source src="videoplayback.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <button class="control-btn play-btn-overlay" id="playPauseToggle">
+                <i id="playPauseIcon" class="fas fa-play"></i>
+            </button>
+            <button class="control-btn fullscreen-btn" id="fullscreenToggle">
+                <i id="fullscreenIcon" class="fas fa-expand"></i>
+            </button>
+            <button class="mute-btn" id="muteToggle">
+                <i id="muteIcon" class="fas fa-volume-mute"></i>
+            </button>
+            <div class="mobile-hint">
+                <i class="fas fa-hand-pointer"></i>
+                <span>Scroll to play</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- COUNTERS -->
+    <section class="counter-section">
+        <div class="container">
+            <div class="counter-grid">
+                <div class="counter-item">
+                    <div class="counter-box">
+                        <div class="counter-icon"><i class="fas fa-project-diagram"></i></div>
+                        <div class="counter-number" data-target="75">0</div>
+                        <div class="counter-label">Projects Completed</div>
+                    </div>
+                </div>
+                <div class="counter-item">
+                    <div class="counter-box">
+                        <div class="counter-icon"><i class="fas fa-users"></i></div>
+                        <div class="counter-number" data-target="384287362">0</div>
+                        <div class="counter-label">Happy Viewers</div>
+                    </div>
+                </div>
+                <div class="counter-item">
+                    <div class="counter-box">
+                        <div class="counter-icon"><i class="fas fa-clock"></i></div>
+                        <div class="counter-number" data-target="9">0</div>
+                        <div class="counter-label">Years Experience</div>
+                    </div>
+                </div>
+                <div class="counter-item">
+                    <div class="counter-box">
+                        <div class="counter-icon"><i class="fas fa-images"></i></div>
+                        <div class="counter-number" data-target="512">+</div>
+                        <div class="counter-label">Photos & Videos</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PHOTOS -->
+    <section id="photos" class="photos">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Our Projects</span>
+                <h2 class="section-title">Featured <span>Photos</span></h2>
+            </div>
+            <div class="swiper photos-swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><div class="photo-card" onclick="openLightbox(this)"><img src="project 1.jpg" alt="Project 1"></div></div>
+                    <div class="swiper-slide"><div class="photo-card" onclick="openLightbox(this)"><img src="project 2.jpg" alt="Project 2"></div></div>
+                    <div class="swiper-slide"><div class="photo-card" onclick="openLightbox(this)"><img src="project 3.jpg" alt="Project 3"></div></div>
+                    <div class="swiper-slide"><div class="photo-card" onclick="openLightbox(this)"><img src="project 4.jpg" alt="Project 4"></div></div>
+                    <div class="swiper-slide"><div class="photo-card" onclick="openLightbox(this)"><img src="project 5.jpg" alt="Project 5"></div></div>
+                    <div class="swiper-slide"><div class="photo-card" onclick="openLightbox(this)"><img src="project 6.jpg" alt="Project 6"></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VIDEOS -->
+    <section id="videos" class="videos">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">My Content</span>
+                <h2 class="section-title">Latest <span>Videos</span></h2>
+            </div>
+            <div class="video-grid">
+                <div class="video-card" data-video="https://youtu.be/YGBG_g4nI8Y">
+                    <div class="video-thumbnail">
+                        <img src="https://img.youtube.com/vi/YGBG_g4nI8Y/maxresdefault.jpg" alt="Video">
+                        <span class="play-btn"><i class="fas fa-play"></i></span>
+                    </div>
+                    <h3>DIY Electronics Project</h3>
+                </div>
+                <div class="video-card" data-video="https://youtu.be/1WkajDXWKXY">
+                    <div class="video-thumbnail">
+                        <img src="https://img.youtube.com/vi/1WkajDXWKXY/maxresdefault.jpg" alt="Video">
+                        <span class="play-btn"><i class="fas fa-play"></i></span>
+                    </div>
+                    <h3>Mechanical Design Tutorial</h3>
+                </div>
+                <div class="video-card" data-video="https://youtu.be/bG3jNbdBkK8">
+                    <div class="video-thumbnail">
+                        <img src="https://img.youtube.com/vi/bG3jNbdBkK8/maxresdefault.jpg" alt="Video">
+                        <span class="play-btn"><i class="fas fa-play"></i></span>
+                    </div>
+                    <h3>CNC Machine Build</h3>
+                </div>
+                <div class="video-card" data-video="https://youtu.be/m-Gl56v2TTA">
+                    <div class="video-thumbnail">
+                        <img src="https://img.youtube.com/vi/m-Gl56v2TTA/maxresdefault.jpg" alt="Video">
+                        <span class="play-btn"><i class="fas fa-play"></i></span>
+                    </div>
+                    <h3>3D Printing Guide</h3>
+                </div>
+                <div class="video-card" data-video="https://youtu.be/elIYj3KsJPg">
+                    <div class="video-thumbnail">
+                        <img src="https://img.youtube.com/vi/elIYj3KsJPg/maxresdefault.jpg" alt="Video">
+                        <span class="play-btn"><i class="fas fa-play"></i></span>
+                    </div>
+                    <h3>Engine Rebuild Part 1</h3>
+                </div>
+                <div class="video-card channel-card" onclick="window.open('https://www.youtube.com/@CreativeScienceOfficial/videos', '_blank')">
+                    <div class="video-thumbnail channel-thumbnail">
+                        <div class="channel-icon-wrapper">
+                            <i class="fab fa-youtube"></i>
+                            <span class="channel-text">SUBSCRIBE</span>
+                        </div>
+                        <span class="play-btn channel-play-btn"><i class="fas fa-play"></i></span>
+                    </div>
+                    <h3>Visit My YouTube Channel</h3>
+                    <p class="channel-sub-text">🎬 Watch all videos</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- PROJECTS -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">My Work</span>
+                <h2 class="section-title">Featured <span>Projects</span></h2>
+            </div>
+            <div class="swiper projects-swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide project-card video-card" data-video="https://youtu.be/0IS1TLAoP20?si=rUbBy1FLVo8hyLxQ">
+                        <img src="https://img.youtube.com/vi/0IS1TLAoP20/maxresdefault.jpg" alt="AI Superbike" onerror="this.src='https://img.youtube.com/vi/0IS1TLAoP20/hqdefault.jpg'">
+                        <div class="project-info">
+                            <h3>AI Superbike</h3>
+                            <p>"Aapka sapna, hamari mehnat."</p>
+                            <span class="play-badge"><i class="fas fa-play"></i> Watch Video</span>
+                        </div>
+                    </div>
+                    <div class="swiper-slide project-card video-card" data-video="https://youtu.be/1WkajDXWKXY">
+                        <img src="https://img.youtube.com/vi/1WkajDXWKXY/maxresdefault.jpg" alt="Engine Assembly" onerror="this.src='https://img.youtube.com/vi/1WkajDXWKXY/hqdefault.jpg'">
+                        <div class="project-info">
+                            <h3>Engine Assembly</h3>
+                            <p>Complete engine rebuild</p>
+                            <span class="play-badge"><i class="fas fa-play"></i> Watch Video</span>
+                        </div>
+                    </div>
+                    <div class="swiper-slide project-card video-card" data-video="https://youtu.be/bG3jNbdBkK8">
+                        <img src="https://img.youtube.com/vi/bG3jNbdBkK8/maxresdefault.jpg" alt="3D Printing" onerror="this.src='https://img.youtube.com/vi/bG3jNbdBkK8/hqdefault.jpg'">
+                        <div class="project-info">
+                            <h3>Industrial 3D Printing</h3>
+                            <p>Large-scale additive manufacturing</p>
+                            <span class="play-badge"><i class="fas fa-play"></i> Watch Video</span>
+                        </div>
+                    </div>
+                    <div class="swiper-slide project-card video-card" data-video="https://youtu.be/m-Gl56v2TTA">
+                        <img src="https://img.youtube.com/vi/m-Gl56v2TTA/maxresdefault.jpg" alt="Robotics" onerror="this.src='https://img.youtube.com/vi/m-Gl56v2TTA/hqdefault.jpg'">
+                        <div class="project-info">
+                            <h3>Robotic Arm Project</h3>
+                            <p>Automated robotic arm</p>
+                            <span class="play-badge"><i class="fas fa-play"></i> Watch Video</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials" id="feedback">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">What People Say</span>
+                <h2 class="section-title">Client <span>Feedback</span></h2>
+                <p class="section-desc">Click on any card to view feedback in fullscreen</p>
+            </div>
+            <div class="testimonial-scroll-wrapper">
+                <div class="testimonial-scroll" id="testimonialScroll">
+                    <!-- cards are generated by JS, but we keep static fallback -->
+                    <div class="testimonial-card-horizontal" onclick="openTestimonialModal(this)">
+                        <div class="testimonial-profile">
+                            <img src="https://ui-avatars.com/api/?name=Rohan+S.&background=f39c12&color=fff&size=80" alt="Rohan S.">
+                            <div class="testimonial-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        </div>
+                        <div class="testimonial-content">
+                            <p>"Shivam transformed our mechanical design process. Highly recommend!"</p>
+                            <h4>Rohan S.</h4>
+                            <span class="testimonial-role">Design Engineer</span>
+                        </div>
+                        <div class="testimonial-expand-icon"><i class="fas fa-expand-alt"></i></div>
+                    </div>
+                    <div class="testimonial-card-horizontal" onclick="openTestimonialModal(this)">
+                        <div class="testimonial-profile">
+                            <img src="https://ui-avatars.com/api/?name=Priya+K.&background=e74c3c&color=fff&size=80" alt="Priya K.">
+                            <div class="testimonial-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        </div>
+                        <div class="testimonial-content">
+                            <p>"His DIY projects inspired me to start my own workshop. Brilliant work."</p>
+                            <h4>Priya K.</h4>
+                            <span class="testimonial-role">Workshop Owner</span>
+                        </div>
+                        <div class="testimonial-expand-icon"><i class="fas fa-expand-alt"></i></div>
+                    </div>
+                    <div class="testimonial-card-horizontal" onclick="openTestimonialModal(this)">
+                        <div class="testimonial-profile">
+                            <img src="https://ui-avatars.com/api/?name=Ankit+M.&background=2ecc71&color=fff&size=80" alt="Ankit M.">
+                            <div class="testimonial-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                        </div>
+                        <div class="testimonial-content">
+                            <p>"Professional, creative, and always on time. Best engineer I've worked with."</p>
+                            <h4>Ankit M.</h4>
+                            <span class="testimonial-role">Project Manager</span>
+                        </div>
+                        <div class="testimonial-expand-icon"><i class="fas fa-expand-alt"></i></div>
+                    </div>
+                    <div class="testimonial-card-horizontal" onclick="openTestimonialModal(this)">
+                        <div class="testimonial-profile">
+                            <img src="https://ui-avatars.com/api/?name=Neha+V.&background=3498db&color=fff&size=80" alt="Neha V.">
+                            <div class="testimonial-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        </div>
+                        <div class="testimonial-content">
+                            <p>"The 3D printing solutions provided were top-notch. Exceeded our expectations!"</p>
+                            <h4>Neha V.</h4>
+                            <span class="testimonial-role">Product Designer</span>
+                        </div>
+                        <div class="testimonial-expand-icon"><i class="fas fa-expand-alt"></i></div>
+                    </div>
+                    <div class="testimonial-card-horizontal" onclick="openTestimonialModal(this)">
+                        <div class="testimonial-profile">
+                            <img src="https://ui-avatars.com/api/?name=Vikram+R.&background=9b59b6&color=fff&size=80" alt="Vikram R.">
+                            <div class="testimonial-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        </div>
+                        <div class="testimonial-content">
+                            <p>"Incredible attention to detail. The robotic arm project was a game-changer for us."</p>
+                            <h4>Vikram R.</h4>
+                            <span class="testimonial-role">Robotics Engineer</span>
+                        </div>
+                        <div class="testimonial-expand-icon"><i class="fas fa-expand-alt"></i></div>
+                    </div>
+                    <div class="testimonial-card-horizontal" onclick="openTestimonialModal(this)">
+                        <div class="testimonial-profile">
+                            <img src="https://ui-avatars.com/api/?name=Sneha+P.&background=1abc9c&color=fff&size=80" alt="Sneha P.">
+                            <div class="testimonial-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        </div>
+                        <div class="testimonial-content">
+                            <p>"Creative Science brought our mechanical concepts to life. Truly outstanding work!"</p>
+                            <h4>Sneha P.</h4>
+                            <span class="testimonial-role">Innovation Lead</span>
+                        </div>
+                        <div class="testimonial-expand-icon"><i class="fas fa-expand-alt"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-controls">
+                <button class="scroll-btn scroll-left" onclick="scrollTestimonials('left')"><i class="fas fa-chevron-left"></i></button>
+                <div class="scroll-indicators" id="scrollIndicators"></div>
+                <button class="scroll-btn scroll-right" onclick="scrollTestimonials('right')"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIAL MODAL -->
+    <div class="testimonial-modal" id="testimonialModal">
+        <div class="testimonial-modal-overlay" onclick="closeTestimonialModal()"></div>
+        <div class="testimonial-modal-content">
+            <button class="testimonial-modal-close" onclick="closeTestimonialModal()"><i class="fas fa-times"></i></button>
+            <div class="testimonial-modal-inner">
+                <div class="testimonial-modal-profile">
+                    <img src="" alt="" id="modalProfileImg">
+                    <div class="modal-rating" id="modalRating"></div>
+                </div>
+                <div class="testimonial-modal-text">
+                    <p id="modalFeedback">"</p>
+                    <h3 id="modalName"></h3>
+                    <span id="modalRole"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- FEEDBACK FORM - GEN-Z STYLE (All Important Fields Mandatory) -->
+<section class="feedback-form-section" id="feedbackFormSection">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-subtitle">💬 We Value Your Voice</span>
+            <h2 class="section-title">Share Your <span>Thoughts</span></h2>
+            <p class="section-desc">Your feedback helps us grow and create better experiences for you ✨</p>
+        </div>
+
+        <div class="feedback-form-wrapper glass-card">
+            <form id="feedbackForm" enctype="multipart/form-data">
+                <!-- Profile Photo Upload (Optional) -->
+                <div class="form-group photo-upload-group">
+                    <div class="photo-upload-wrapper">
+                        <div class="photo-preview" id="photoPreview">
+                            <img src="https://ui-avatars.com/api/?name=User&background=f39c12&color=fff&size=120" alt="Profile Photo" id="profilePhotoImg">
+                            <div class="photo-overlay">
+                                <i class="fas fa-camera"></i>
+                                <span>Add Photo</span>
+                            </div>
+                        </div>
+                        <input type="file" id="profilePhoto" name="profilePhoto" accept="image/*" capture="environment">
+                        <label for="profilePhoto" class="photo-upload-label">
+                            <i class="fas fa-plus-circle"></i> Upload Profile Photo <span class="optional-badge">Optional</span>
+                        </label>
+                        <p class="photo-hint">Upload a photo so we can recognize you 👤</p>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <!-- Name (Mandatory) -->
+                    <div class="form-group">
+                        <label for="userName">
+                            Full Name <span class="required-star">*</span>
+                        </label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-user input-icon"></i>
+                            <input type="text" id="userName" name="name" placeholder="Enter your full name" required>
+                        </div>
+                    </div>
+
+                    <!-- Email (Mandatory) -->
+                    <div class="form-group">
+                        <label for="userEmail">
+                            Email Address <span class="required-star">*</span>
+                        </label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-envelope input-icon"></i>
+                            <input type="email" id="userEmail" name="email" placeholder="Enter your email address" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <!-- Phone (Mandatory) -->
+                    <div class="form-group">
+                        <label for="userPhone">
+                            Phone Number <span class="required-star">*</span>
+                        </label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-phone input-icon"></i>
+                            <input type="tel" id="userPhone" name="phone" placeholder="Enter your phone number" required>
+                        </div>
+                    </div>
+
+                    <!-- Subject (Mandatory) -->
+                    <div class="form-group">
+                        <label for="userSubject">
+                            Subject <span class="required-star">*</span>
+                        </label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-tag input-icon"></i>
+                            <input type="text" id="userSubject" name="subject" placeholder="What is this about?" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rating (Optional) -->
+                <div class="form-group">
+                    <label for="rating">Rate Your Experience ⭐</label>
+                    <div class="rating-wrapper">
+                        <div class="rating-stars" id="ratingStars">
+                            <i class="fas fa-star" data-value="1"></i>
+                            <i class="fas fa-star" data-value="2"></i>
+                            <i class="fas fa-star" data-value="3"></i>
+                            <i class="fas fa-star" data-value="4"></i>
+                            <i class="fas fa-star" data-value="5"></i>
+                        </div>
+                        <input type="hidden" id="userRating" name="rating" value="0">
+                        <span class="rating-label" id="ratingLabel">Select a rating</span>
+                    </div>
+                </div>
+
+                <!-- Message (Mandatory) -->
+                <div class="form-group">
+                    <label for="userMessage">
+                        Your Feedback <span class="required-star">*</span>
+                    </label>
+                    <div class="input-wrapper textarea-wrapper">
+                        <i class="fas fa-comment input-icon textarea-icon"></i>
+                        <textarea id="userMessage" name="message" rows="5" placeholder="Tell us what you think... 💭" required></textarea>
+                    </div>
+                    <div class="char-counter" id="charCounter">
+                        <span id="charCount">0</span> / 500 characters
+                    </div>
+                </div>
+
+                <!-- Submit -->
+                <button type="submit" class="btn btn-submit">
+                    <i class="fas fa-paper-plane"></i> Send Feedback
+                    <span class="btn-sparkle">✨</span>
+                </button>
+
+                <p class="form-note">🌟 Your feedback is precious to us. We read every single message!</p>
+            </form>
+            <div id="formStatus" style="display:none;"></div>
+        </div>
+    </div>
+</section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Creative Science. All rights reserved. | Mechanical Engineer Shivam Maurya</p>
+        </div>
+    </footer>
+
+    <!-- VIDEO MODAL -->
+    <div id="videoModal" class="video-modal">
+        <span class="close-btn">&times;</span>
+        <iframe id="modalVideo" src="" frameborder="0" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" loading="lazy"></iframe>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="main - Copy.js"></script>
+</body>
+</html>
