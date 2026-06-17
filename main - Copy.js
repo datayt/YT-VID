@@ -297,7 +297,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const formData = new FormData(feedbackForm);
             const formObject = {};
             formData.forEach((val, key) => formObject[key] = val);
-            const scriptURL = 'https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec';
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbwIcOJi396ZS9mTu9JnpFgRudiC_9hC3ozK5JX7qeQljuK2BZe0WD9x0uYVSD8gjcvFvg/exec';
             try {
                 const res = await fetch(scriptURL, {
                     method: 'POST',
