@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel | Creative Science</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        /* 🎨 EXACT COLOR THEME FROM YOUR WEBSITE */
+        :root {
+            --bg-main: #06090e;
+            --bg-card: #0d121a;
+            --bg-nav: rgba(6, 9, 14, 0.85);
+            --primary: #ff6a00;
+            --primary-rgb: 255, 106, 0;
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+            --border-color: #1e293b;
+            --transition: all 0.3s ease;
+            --max-width: 1200px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+        body { background-color: var(--bg-main); color: var(--text-main); padding: 20px; min-height: 100vh; }
+        a { text-decoration: none; color: inherit; }
+
+        /* Container */
+        .container { max-width: 1400px; margin: 0 auto; }
+
+        /* Header */
+        .admin-header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 0; border-bottom: 1px solid var(--border-color); margin-bottom: 30px;
+        }
+        .admin-title { font-size: 1.8rem; font-weight: 800; color: var(--primary); }
+        .admin-title span { color: var(--text-main); font-weight: 400; }
+        .logout-btn {
+            background: transparent; border: 1px solid var(--yt-red); color: var(--yt-red);
+            padding: 8px 20px; border-radius: 6px; cursor: pointer; transition: var(--transition);
+            font-weight: 600;
+        }
+        .logout-btn:hover { background: var(--yt-red); color: #fff; transform: translateY(-2px); }
+
+        /* Stats Cards */
+        .stats-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px; margin-bottom: 30px;
+        }
+        .stat-card {
+            background: var(--bg-card); border: 1px solid var(--border-color);
+            border-radius: 12px; padding: 20px; transition: var(--transition);
+        }
+        .stat-card:hover { transform: translateY(-5px); border-color: rgba(255, 106, 0, 0.3); box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
+        .stat-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .stat-icon { color: var(--primary); font-size: 1.8rem; }
+        .stat-number { font-size: 2.2rem; font-weight: 700; color: var(--primary); }
+        .stat-label { color: var(--text-muted); font-size: 0.9rem; margin-top: 4px; }
+
+        /* Charts Section */
+        .charts-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 25px; margin-bottom: 40px;
+        }
+        .chart-card {
+            background: var(--bg-card); border: 1px solid var(--border-color);
+            border-radius: 12px; padding: 20px;
+        }
+        .chart-card h4 { color: var(--text-main); margin-bottom: 15px; font-size: 1.1rem; }
+        .chart-wrapper { height: 250px; position: relative; }
+
+        /* Table */
+        .table-card {
+            background: var(--bg-card); border: 1px solid var(--border-color);
+            border-radius: 12px; padding: 20px; overflow-x: auto;
+        }
+        .table-card h4 { margin-bottom: 15px; font-size: 1.1rem; }
+        table { width: 100%; border-collapse: collapse; min-width: 800px; }
+        th, td { padding: 14px 12px; text-align: left; border-bottom: 1px solid var(--border-color); font-size: 0.85rem; }
+        th { color: var(--text-muted); font-weight: 600; background: rgba(255, 255, 255, 0.03); }
+        td { color: var(--text-main); }
+        tr:hover { background: rgba(255, 255, 255, 0.02); }
+
+        /* 🔐 Login Modal (Match your Article Modal style) */
+        .login-overlay {
+            position: fixed; inset: 0; z-index: 99999;
+            background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px);
+            display: flex; align-items: center; justify-content: center;
+        }
+        .login-box {
+            background: #0d121a; max-width: 400px; width: 95%; padding: 35px;
+            border-radius: 20px; border: 1px solid var(--border-color);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+            animation: pop-in 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-align: center;
+        }
+        @keyframes pop-in { 0% { transform: scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+        .login-box h2 { color: var(--primary); margin-bottom: 10px; }
+        .login-box p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px; }
+        .login-input {
+            width: 100%; padding: 12px 16px; border-radius: 8px; border: 1px solid var(--border-color);
+            background: var(--bg-main); color: var(--text-main); font-size: 1rem; margin-bottom: 15px;
+            outline: none; transition: var(--transition);
+        }
+        .login-input:focus { border-color: var(--primary); box-shadow: 0 0 10px rgba(255, 106, 0, 0.2); }
+        .login-btn {
+            width: 100%; padding: 12px; background: var(--primary); color: #fff; border: none;
+            border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 1rem;
+            transition: var(--transition);
+        }
+        .login-btn:hover { background: #e05d00; transform: translateY(-2px); }
+        .login-error { color: var(--yt-red); font-size: 0.85rem; margin-top: 10px; display: none; }
+
+        /* Loader */
+        .loader { text-align: center; color: var(--text-muted); padding: 40px 0; }
+        .loader i { animation: spin 1s linear infinite; margin-right: 8px; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .charts-grid { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .admin-header { flex-direction: column; gap: 15px; align-items: flex-start; }
+        }
+        @media (max-width: 480px) {
+            .stats-grid { grid-template-columns: 1fr; }
+            .stat-number { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 🔐 LOGIN MODAL -->
+    <div id="loginOverlay" class="login-overlay">
+        <div class="login-box">
+            <h2><i class="fas fa-lock"></i> Admin Access</h2>
+            <p>Enter the password to view analytics</p>
+            <input type="password" id="passwordInput" class="login-input" placeholder="Enter Password">
+            <button id="loginBtn" class="login-btn">Unlock Dashboard</button>
+            <div id="loginError" class="login-error">Wrong password! Try again.</div>
+        </div>
+    </div>
+
+    <!-- 🖥️ DASHBOARD -->
+    <div id="dashboard" style="display: none;">
+        <div class="container">
+            <header class="admin-header">
+                <h1 class="admin-title">Creative <span>Science</span> <i class="fas fa-chart-line" style="font-size: 1.5rem; color: var(--text-muted);"></i></h1>
+                <button id="logoutBtn" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            </header>
+
+            <div id="loader" class="loader"><i class="fas fa-circle-notch"></i> Loading Analytics...</div>
+
+            <div id="contentArea" style="display: none;">
+                <!-- Stats Cards -->
+                <div class="stats-grid" id="statsCards">
+                    <div class="stat-card"><div class="stat-header"><div class="stat-icon"><i class="fas fa-users"></i></div><span>Total</span></div><div class="stat-number" id="totalVisits">0</div><div class="stat-label">All Time Visits</div></div>
+                    <div class="stat-card"><div class="stat-header"><div class="stat-icon"><i class="fas fa-fingerprint"></i></div><span>Unique</span></div><div class="stat-number" id="uniqueIPs">0</div><div class="stat-label">Unique Visitors</div></div>
+                    <div class="stat-card"><div class="stat-header"><div class="stat-icon"><i class="fas fa-calendar-day"></i></div><span>Today</span></div><div class="stat-number" id="todayVisits">0</div><div class="stat-label">Today's Visits</div></div>
+                    <div class="stat-card"><div class="stat-header"><div class="stat-icon"><i class="fas fa-globe-asia"></i></div><span>Locations</span></div><div class="stat-number" id="totalLocations">0</div><div class="stat-label">Unique Cities</div></div>
+                </div>
+
+                <!-- Charts -->
+                <div class="charts-grid">
+                    <div class="chart-card"><h4><i class="fas fa-mobile-alt" style="color:var(--primary);"></i> Device Distribution</h4><div class="chart-wrapper"><canvas id="deviceChart"></canvas></div></div>
+                    <div class="chart-card"><h4><i class="fas fa-chart-line" style="color:var(--primary);"></i> Daily Traffic</h4><div class="chart-wrapper"><canvas id="dailyChart"></canvas></div></div>
+                    <div class="chart-card"><h4><i class="fas fa-map-pin" style="color:var(--primary);"></i> Top Locations</h4><div class="chart-wrapper"><canvas id="locationChart"></canvas></div></div>
+                </div>
+
+                <!-- Data Table -->
+                <div class="table-card">
+                    <h4><i class="fas fa-table" style="color:var(--primary);"></i> Recent Visitor Logs</h4>
+                    <table>
+                        <thead>
+                            <tr><th>#</th><th>Timestamp</th><th>IP</th><th>Location</th><th>Device</th><th>Screen</th><th>Referrer</th></tr>
+                        </thead>
+                        <tbody id="dataTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ==============================================
+        // 🛡️ ADMIN PASSWORD (Change here if needed)
+        // ==============================================
+        const ADMIN_PASSWORD = "admin123";
+
+        // ==============================================
+        // 🔗 YOUR GOOGLE APPS SCRIPT URL
+        // ==============================================
+        const API_URL = "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
+
+        // ==============================================
+        // 🛠️ LOGIN LOGIC
+        // ==============================================
+        const loginOverlay = document.getElementById('loginOverlay');
+        const passwordInput = document.getElementById('passwordInput');
+        const loginBtn = document.getElementById('loginBtn');
+        const loginError = document.getElementById('loginError');
+        const dashboard = document.getElementById('dashboard');
+        const logoutBtn = document.getElementById('logoutBtn');
+
+        function checkLogin() {
+            if (sessionStorage.getItem('adminLoggedIn') === 'true') {
+                loginOverlay.style.display = 'none';
+                dashboard.style.display = 'block';
+                loadData();
+            } else {
+                loginOverlay.style.display = 'flex';
+                dashboard.style.display = 'none';
+            }
+        }
+
+        loginBtn.addEventListener('click', () => {
+            if (passwordInput.value === ADMIN_PASSWORD) {
+                sessionStorage.setItem('adminLoggedIn', 'true');
+                loginError.style.display = 'none';
+                checkLogin();
+            } else {
+                loginError.style.display = 'block';
+                passwordInput.value = '';
+            }
+        });
+
+        passwordInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') loginBtn.click(); });
+
+        logoutBtn.addEventListener('click', () => {
+            sessionStorage.removeItem('adminLoggedIn');
+            location.reload();
+        });
+
+        // Initial check
+        checkLogin();
+
+        // ==============================================
+        // 📊 DATA FETCH & DASHBOARD LOGIC
+        // ==============================================
+        async function loadData() {
+            const loader = document.getElementById('loader');
+            const contentArea = document.getElementById('contentArea');
+            loader.style.display = 'block';
+            contentArea.style.display = 'none';
+
+            try {
+                const response = await fetch(API_URL);
+                const data = await response.json();
+
+                if (!data || data.length === 0) {
+                    alert("No data found in Google Sheets yet. Visit your website first!");
+                    loader.style.display = 'none';
+                    return;
+                }
+
+                renderDashboard(data);
+                loader.style.display = 'none';
+                contentArea.style.display = 'block';
+            } catch (error) {
+                console.error("Error fetching data:", error);
+                alert("Failed to load data. Check your API URL or CORS settings.");
+                loader.style.display = 'none';
+            }
+        }
+
+        function renderDashboard(data) {
+            // --- 1. Stats ---
+            document.getElementById('totalVisits').innerText = data.length;
+            const uniqueIPs = new Set(data.map(row => row.IP)).size;
+            document.getElementById('uniqueIPs').innerText = uniqueIPs;
+
+            const today = new Date().toISOString().split('T')[0];
+            const todayVisits = data.filter(row => row.Timestamp && row.Timestamp.startsWith(today)).length;
+            document.getElementById('todayVisits').innerText = todayVisits;
+
+            const uniqueLocations = new Set(data.map(row => row.Location).filter(l => l && l !== 'Unknown, Unknown, Unknown')).size;
+            document.getElementById('totalLocations').innerText = uniqueLocations;
+
+            // --- 2. Process Data for Charts ---
+            // Device Grouping
+            const deviceCounts = { Mobile: 0, Desktop: 0, Tablet: 0, Other: 0 };
+            data.forEach(row => {
+                const ua = (row.Device || '').toLowerCase();
+                if (ua.includes('mobile') || ua.includes('iphone') || ua.includes('android')) deviceCounts.Mobile++;
+                else if (ua.includes('tablet') || ua.includes('ipad')) deviceCounts.Tablet++;
+                else if (ua.includes('windows') || ua.includes('mac') || ua.includes('linux')) deviceCounts.Desktop++;
+                else deviceCounts.Other++;
+            });
+
+            // Daily Traffic
+            const dailyMap = {};
+            data.forEach(row => {
+                if (row.Timestamp) {
+                    const date = row.Timestamp.split('T')[0];
+                    dailyMap[date] = (dailyMap[date] || 0) + 1;
+                }
+            });
+            const dates = Object.keys(dailyMap).sort();
+            const dailyValues = dates.map(d => dailyMap[d]);
+
+            // Locations (Group by City, Country)
+            const locMap = {};
+            data.forEach(row => {
+                const loc = row.Location || 'Unknown';
+                if (loc !== 'Unknown, Unknown, Unknown' && loc !== '') {
+                    locMap[loc] = (locMap[loc] || 0) + 1;
+                }
+            });
+            const sortedLocs = Object.entries(locMap).sort((a,b) => b[1] - a[1]).slice(0, 6);
+            const locLabels = sortedLocs.map(l => l[0]);
+            const locValues = sortedLocs.map(l => l[1]);
+
+            // --- 3. Render Charts ---
+            const primaryColor = '#ff6a00';
+            const secondaryColor = '#94a3b8';
+            
+            new Chart(document.getElementById('deviceChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: Object.keys(deviceCounts),
+                    datasets: [{
+                        data: Object.values(deviceCounts),
+                        backgroundColor: ['#ff6a00', '#e05d00', '#b84c00', '#3b3b3b'],
+                        borderColor: '#0d121a',
+                        borderWidth: 2
+                    }]
+                },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { labels: { color: '#fff' } } } }
+            });
+
+            new Chart(document.getElementById('dailyChart'), {
+                type: 'line',
+                data: {
+                    labels: dates,
+                    datasets: [{
+                        label: 'Visits',
+                        data: dailyValues,
+                        borderColor: primaryColor,
+                        backgroundColor: primaryColor + '30',
+                        fill: true,
+                        tension: 0.4,
+                        pointBackgroundColor: primaryColor
+                    }]
+                },
+                options: { 
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { legend: { labels: { color: '#fff' } } },
+                    scales: { x: { ticks: { color: secondaryColor } }, y: { ticks: { color: secondaryColor } } }
+                }
+            });
+
+            new Chart(document.getElementById('locationChart'), {
+                type: 'bar',
+                data: {
+                    labels: locLabels,
+                    datasets: [{
+                        label: 'Visitors',
+                        data: locValues,
+                        backgroundColor: locLabels.map((_, i) => `rgba(255, 106, 0, ${0.7 - i * 0.1})`),
+                        borderColor: primaryColor,
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: { x: { ticks: { color: secondaryColor } }, y: { ticks: { color: '#fff', maxRotation: 0 } } }
+                }
+            });
+
+            // --- 4. Render Table ---
+            const tbody = document.getElementById('dataTableBody');
+            tbody.innerHTML = '';
+            data.slice(0, 50).forEach((row, i) => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${i + 1}</td>
+                    <td style="white-space:nowrap;">${row.Timestamp || '-'}</td>
+                    <td>${row.IP || '-'}</td>
+                    <td>${row.Location || '-'}</td>
+                    <td style="max-width:200px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${row.Device || '-'}</td>
+                    <td>${row.Screen || '-'}</td>
+                    <td>${row.Referrer || '-'}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+    </script>
+</body>
+</html>
