@@ -1,0 +1,72 @@
+    <!-- Projects -->
+    <section class="section-padding" id="projects" style="background-color: rgba(13, 18, 26, 0.3);">
+        <div class="container">
+            <div class="projects-header reveal-blur">
+                <div>
+                    <div class="section-title">Featured Projects</div>
+                    <h3 class="section-heading">Innovations That Inspire</h3>
+                </div>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card reveal-blur">
+                    <div class="project-img"><img src="RE IMG/IMG_2264.PNG"
+                            alt="AI Superbike">
+                        <div class="play-overlay" data-video-id="https://youtube.com/watch?v=YGBG_g4nI8Y"><i
+                                class="fas fa-play"></i></div>
+                    </div>
+                    <div class="project-info">
+                        <h4>AI Superbike</h4>
+                        <p>India's futuristic hubless wheel superbike designed and built completely from scratch.</p>
+                    </div>
+                </div>
+                <div class="project-card reveal-blur">
+                    <div class="project-img"><img src="RE IMG/IMG_2262.PNG"
+                            alt="Capsule EV">
+                        <div class="play-overlay" data-video-id="https://www.youtube.com/watch?v=1WkajDXWKXY"><i
+                                class="fas fa-play"></i></div>
+                    </div>
+                    <div class="project-info">
+                        <h4>Capsule EV</h4>
+                        <p>Self-developed futuristic electric vehicle concept configured for smart city pods.</p>
+                    </div>
+                </div>
+                <div class="project-card reveal-blur">
+                    <div class="project-img"><img src="RE IMG/IMG_2260.PNG"
+                            alt="Walking Robot">
+                        <div class="play-overlay" data-video-id="https://www.youtube.com/watch?v=6vzgzyZmZKk"><i
+                                class="fas fa-play"></i></div>
+                    </div>
+                    <div class="project-info">
+                        <h4>Walking Robot</h4>
+                        <p>Human-inspired mechanical robotic mobility system showcasing structural balancing layouts.
+                        </p>
+                    </div>
+                </div>
+                <div class="project-card reveal-blur">
+                    <div class="project-img"><img src="RE IMG/IMG_2265.PNG"
+                            alt="Delivery Robot">
+                        <div class="play-overlay" data-video-id="https://youtube.com/watch?v=D5blryoT6Sg"><i
+                                class="fas fa-play"></i></div>
+                    </div>
+                    <div class="project-info">
+                        <h4>One wheel Motorcycle</h4>
+                        <p>Autonomous robotic payload transportation system built to navigate offroad paths.</p>
+                    </div>
+                </div>
+                <div class="project-card reveal-blur">
+                    <div class="project-img"><img src="RE IMG/IMG_2266.PNG"
+                            alt="Hubless Bike">
+                        <div class="play-overlay" data-video-id="https://www.youtube.com/watch?v=mrs--gOurUg"><i
+                                class="fas fa-play"></i></div>
+                    </div>
+                    <div class="project-info">
+                        <h4>Ghost Cycle</h4>
+                        <p>Custom engineering design using custom bearing rollers to deliver completely hollow wheels.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="view-all-container reveal-blur"><a href="#" class="btn btn-outline">View All Projects <i
+                        class="fas fa-arrow-right"></i></a></div>
+        </div>
+    </section>
