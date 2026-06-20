@@ -1,394 +1,449 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>Creative Science | Shivam Maurya</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+// ==============================================
+// UPDATED: BLUR & FADE SCROLL REVEAL OBSERVER
+// ==============================================
+const revealElements = document.querySelectorAll('.reveal-blur');
 
-    <!-- 🎵 Background Music (Autoplay + Loop) -->
-    <audio id="bg-music" src="bg-music.mp3" loop autoplay></audio>
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            revealObserver.unobserve(entry.target);
+        }
+    });
+}, {
+    threshold: 0.15,
+    rootMargin: "0px 0px -50px 0px"
+});
 
-    <!-- Custom Mouse Cursor -->
-    <div id="custom-cursor"></div>
-    <div id="cursor-trail-container"></div>
+revealElements.forEach(el => {
+    revealObserver.observe(el);
+});
 
-    <!-- Instagram Story Icon -->
-    <div id="instant-story" class="story-ring">
-        <div class="story-gradient"></div>
-        <div class="story-image-wrapper">
-            <img id="story-image" src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&q=80&w=150" alt="Instant Story">
-        </div>
-    </div>
 
-    <header>
-        <div class="container nav-container">
-            <a href="#" class="logo">
-                <img src="logo.png" alt="Creative Science" class="logo-img">
-                <div class="logo-text">
-                    <h1>Creative Science</h1>
-                    <span>THINK | BUILD | INSPIRE</span>
-                </div>
-            </a>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#" class="nav-link active">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#videos" class="nav-link">Videos</a></li>
-                <li><a href="#media" class="nav-link">Media</a></li>
-                <li><a href="#journey" class="nav-link">Achievements</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-            <div class="nav-actions">
-                <a href="https://www.youtube.com/@CreativeScienceOfficial?sub_confirmation=1" target="_blank" class="btn btn-yt"><i class="fab fa-youtube"></i> Subscribe</a>
-                <div class="menu-toggle" id="menuToggle">
-                    <i class="fas fa-bars"></i>
-                </div>
-            </div>
-        </div>
-    </header>
+// ==============================================
+// MOBILE MENU TOGGLE
+// ==============================================
+const menuToggle = document.getElementById('menuToggle');
+const navMenu = document.getElementById('navMenu');
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container hero-grid">
-            <div class="hero-content">
-                <div class="hero-tag">India's Innovative Creator</div>
-                <h2 class="hero-title">Shivam Maurya</h2>
-                <div class="hero-subtitle">Founder of Creative Science</div>
-                <p class="hero-stats-line">2M+ YouTube Family &bull; 75+ Projects &bull; Featured in National Media</p>
-                <p class="hero-desc">Transforming impossible tech ideas into real-world working inventions. From initial concept validation down to complete hardware execution.</p>
-                <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary">Watch Projects <i class="fas fa-arrow-right"></i></a>
-                    <a href="https://www.youtube.com/@CreativeScienceOfficial?sub_confirmation=1" target="_blank" class="btn btn-outline"><i class="fab fa-youtube"></i> Subscribe on YouTube</a>
-                </div>
-                <div class="social-row">
-                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
+if(menuToggle) {
+    menuToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('open');
+        const icon = menuToggle.querySelector('i');
+        icon.className = navMenu.classList.contains('open') ? 'fas fa-times' : 'fas fa-bars';
+    });
+}
 
-    <!-- Stats -->
-    <section class="stats-bar reveal-blur">
-        <div class="container stats-grid">
-            <div class="stat-item"><i class="fab fa-youtube fa-2x stat-icon"></i><h3>2M+</h3><p>YouTube Subscribers</p></div>
-            <div class="stat-item"><i class="fas fa-eye fa-2x stat-icon"></i><h3>380M+</h3><p>Total Views</p></div>
-            <div class="stat-item"><i class="fas fa-newspaper fa-2x stat-icon"></i><h3>Featured</h3><p>National Newspapers</p></div>
-            <div class="stat-item"><i class="fas fa-trophy fa-2x stat-icon"></i><h3>75+</h3><p>Innovative Projects</p></div>
-            <div class="stat-item"><i class="fas fa-globe fa-2x stat-icon"></i><h3>100+</h3><p>Countries Worldwide</p></div>
-        </div>
-    </section>
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+        navMenu.classList.remove('open');
+        document.querySelector('.menu-toggle i').className = 'fas fa-bars';
+    });
+});
 
-    <!-- About -->
-    <section class="section-padding" id="about">
-        <div class="container about-grid">
-            <div class="about-image reveal-blur"><img src="IMG-INFO.jpeg" alt="Shivam Working"></div>
-            <div class="about-content reveal-blur">
-                <div class="section-title">About Me</div>
-                <h3 class="section-heading">About Shivam Maurya</h3>
-                <p class="about-text">I am an Indian innovator, content creator, and project developer behind Creative Science. Over the last several years, I have built futuristic vehicles, robotics systems, AI-powered machines, electric mobility concepts, and engineering experiments that have inspired millions of viewers worldwide.</p>
-                <div class="quote-box">"To prove that impossible ideas can become reality through creativity, science, and determination."</div>
-                <a href="https://www.youtube.com/@CreativeScienceOfficial/about" class="btn btn-primary">Know More About Me <i class="fas fa-arrow-right"></i></a>
-            </div>
-        </div>
-    </section>
 
-    <!-- Projects -->
-    <section class="section-padding" id="projects" style="background-color: rgba(13, 18, 26, 0.3);">
-        <div class="container">
-            <div class="projects-header reveal-blur">
-                <div>
-                    <div class="section-title">Featured Projects</div>
-                    <h3 class="section-heading">Innovations That Inspire</h3>
-                </div>
-            </div>
-            <div class="projects-grid">
-                <div class="project-card reveal-blur">
-                    <div class="project-img"><img src="RE IMG/IMG_2264.PNG"
-                            alt="AI Superbike">
-                        <div class="play-overlay" data-video-id="https://youtube.com/watch?v=YGBG_g4nI8Y"><i
-                                class="fas fa-play"></i></div>
-                    </div>
-                    <div class="project-info">
-                        <h4>AI Superbike</h4>
-                        <p>India's futuristic hubless wheel superbike designed and built completely from scratch.</p>
-                    </div>
-                </div>
-                <div class="project-card reveal-blur">
-                    <div class="project-img"><img src="RE IMG/IMG_2262.PNG"
-                            alt="Capsule EV">
-                        <div class="play-overlay" data-video-id="https://www.youtube.com/watch?v=1WkajDXWKXY"><i
-                                class="fas fa-play"></i></div>
-                    </div>
-                    <div class="project-info">
-                        <h4>Capsule EV</h4>
-                        <p>Self-developed futuristic electric vehicle concept configured for smart city pods.</p>
-                    </div>
-                </div>
-                <div class="project-card reveal-blur">
-                    <div class="project-img"><img src="RE IMG/IMG_2260.PNG"
-                            alt="Walking Robot">
-                        <div class="play-overlay" data-video-id="https://www.youtube.com/watch?v=6vzgzyZmZKk"><i
-                                class="fas fa-play"></i></div>
-                    </div>
-                    <div class="project-info">
-                        <h4>Walking Robot</h4>
-                        <p>Human-inspired mechanical robotic mobility system showcasing structural balancing layouts.
-                        </p>
-                    </div>
-                </div>
-                <div class="project-card reveal-blur">
-                    <div class="project-img"><img src="RE IMG/IMG_2265.PNG"
-                            alt="Delivery Robot">
-                        <div class="play-overlay" data-video-id="https://youtube.com/watch?v=D5blryoT6Sg"><i
-                                class="fas fa-play"></i></div>
-                    </div>
-                    <div class="project-info">
-                        <h4>One wheel Motorcycle</h4>
-                        <p>Autonomous robotic payload transportation system built to navigate offroad paths.</p>
-                    </div>
-                </div>
-                <div class="project-card reveal-blur">
-                    <div class="project-img"><img src="RE IMG/IMG_2266.PNG"
-                            alt="Hubless Bike">
-                        <div class="play-overlay" data-video-id="https://www.youtube.com/watch?v=mrs--gOurUg"><i
-                                class="fas fa-play"></i></div>
-                    </div>
-                    <div class="project-info">
-                        <h4>Ghost Cycle</h4>
-                        <p>Custom engineering design using custom bearing rollers to deliver completely hollow wheels.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="view-all-container reveal-blur"><a href="#" class="btn btn-outline">View All Projects <i
-                        class="fas fa-arrow-right"></i></a></div>
-        </div>
-    </section>
-    
-    <!-- Media -->
-    <section class="section-padding media-section" id="media">
-        <div class="container">
-            <div class="section-title reveal-blur">Featured In Media</div>
-            <h3 class="section-heading reveal-blur">Proud to be Recognized</h3>
-            <div class="media-slider-wrapper reveal-blur">
-                <div class="media-track-container">
-                    <div class="media-track" id="mediaTrack"></div>
-                </div>
-            </div>
-        </div>
-    </section>
+// ==============================================
+// YOUTUBE VIDEOS (Updated with Google Drive link)
+// ==============================================
+const videoData = {
+    latest: [
+        { title: "I made an Smart Dustbin", views: " ~ views", time: "Nov 15, 2025", duration: "06:39", img: "https://img.youtube.com/vi/0IS1TLAoP20/maxresdefault.jpg", videoId: "0IS1TLAoP20" }, 
+        { 
+            title: "Smart Dustbin (Google Drive)", 
+            views: " ~ views", 
+            time: "Dec 24, 2025", 
+            duration: "0:22", 
+            // ✅ FIX: Use a placeholder or your own image URL (Drive links don't work here)
+            img: "https://drive.google.com/uc?export=view&id=1mqPevHltcYE6RMbaCL4gnB6btEgZ2lbS", 
+            // ✅ Video link stays as Google Drive (This works perfectly in the modal)
+            videoId: "https://drive.google.com/file/d/1FHy30LQgaTL6W3eBBr7tQbvfbS5Dpi68/view?usp=sharing" 
+        }
+    ],
+    popular: [{ title: "Building a Functional Hubless Bicycle from Scratch!", views: "5.4M views", time: "1 year ago", duration: "11:20", img: "https://img.youtube.com/vi/P_4IT_zwojw/maxresdefault.jpg", videoId: "s_WCm5PMzmk" }, { title: "Transforming Old Junk into an Offroad Delivery Droid", views: "3.1M views", time: "8 months ago", duration: "15:20", img: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=350", videoId: "dQw4w9WgXcQ" }],
+    playlist: [{ title: "Robotics Systems Full Engineering Playlists", views: "12 videos", time: "Updated Yesterday", duration: "PLAYLIST", img: "", videoId: "s_WCm5PMzmk" }, { title: "Electric Vehicle Concepts Complete Engineering Log", views: "8 videos", time: "Updated 2 weeks ago", duration: "PLAYLIST", img: "https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&q=80&w=350", videoId: "dQw4w9WgXcQ" }],
+    shorts: [{ title: "Testing the Hubless wheel load capacity!", views: "12M views", time: "5 days ago", duration: "0:58", img: "https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&q=80&w=350", videoId: "s_WCm5PMzmk" }, { title: "When your robot learns to balance itself 😂", views: "8.4M views", time: "1 month ago", duration: "0:42", img: "https://images.unsplash.com/photo-1608962714026-af9a77909d38?auto=format&fit=crop&q=80&w=350", videoId: "dQw4w9WgXcQ" }]
+};
 
-    <!-- Videos -->
-    <section class="section-padding" id="videos">
-        <div class="container youtube-layout">
-            <div class="yt-cta-side reveal-blur">
-                <div class="section-title">Watch Creative Science</div>
-                <h3 class="section-heading">2M+ Subscribers are following our journey</h3>
-                <p style="color: var(--text-muted); margin-bottom: 24px;">Catch live video coverage detailing step-by-step production mechanics, assembly layout logic, and stress tests.</p>
-                <a href="https://www.youtube.com/@CreativeScienceOfficial" target="_blank" class="btn btn-yt"><i class="fab fa-youtube"></i> Visit YouTube Channel</a>
-            </div>
-            <div class="yt-content-side">
-                <div class="yt-tabs reveal-blur">
-                    <button class="tab-btn active" onclick="switchTab('latest')">Latest Uploads</button>
-                    <button class="tab-btn" onclick="switchTab('popular')">Most Popular</button>
-                    <button class="tab-btn" onclick="switchTab('playlist')">Project Playlist</button>
-                    <button class="tab-btn" onclick="switchTab('shorts')">Shorts</button>
-                </div>
-                <div class="videos-grid reveal-blur" id="videoGrid"></div>
-            </div>
-        </div>
-    </section>
+function renderVideos(category) {
+    const grid = document.getElementById('videoGrid');
+    if(!grid) return; grid.innerHTML = ''; 
+    videoData[category].forEach(vid => {
+        const card = document.createElement('div');
+        card.className = 'video-card';
+        card.innerHTML = `<div class="video-thumb js-video-play-btn" data-video-id="${vid.videoId}"><img src="${vid.img}" alt="${vid.title}"><div class="duration-badge">${vid.duration}</div><div class="thumb-play-icon"><i class="fas fa-play"></i></div></div><div class="video-details"><h4>${vid.title}</h4><div class="video-meta">${vid.views} &bull; ${vid.time}</div></div>`;
+        grid.appendChild(card);
+    });
+}
+function switchTab(category) {
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if(btn.getAttribute('onclick').includes(category)) btn.classList.add('active');
+    });
+    renderVideos(category);
+}
 
-    <!-- Journey -->
-    <section class="section-padding" id="journey" style="border-top: 1px solid var(--border-color);">
-        <div class="container">
-            <div style="text-align: center;">
-                <div class="section-title reveal-blur">Journey of Creative Science</div>
-                <h3 class="section-heading reveal-blur">From Idea to Impact</h3>
-            </div>
-            <div class="timeline-container reveal-blur">
-                <div class="timeline-line"></div>
-                <div class="timeline-track">
-                    <div class="timeline-node">
-                        <div class="node-year">2016</div>
-                        <div class="node-dot"></div>
-                        <div class="node-desc">Started Experimenting & tinkering</div>
-                    </div>
-                    <div class="timeline-node">
-                        <div class="node-year">2018</div>
-                        <div class="node-dot"></div>
-                        <div class="node-desc">First Major Viral Video Milestone</div>
-                    </div>
-                    <div class="timeline-node">
-                        <div class="node-year">2020</div>
-                        <div class="node-dot"></div>
-                        <div class="node-desc">Hit 500K Milestone Subscriber base</div>
-                    </div>
-                    <div class="timeline-node">
-                        <div class="node-year">2022</div>
-                        <div class="node-dot"></div>
-                        <div class="node-desc">1 Million Subscribers Achieved</div>
-                    </div>
-                    <div class="timeline-node">
-                        <div class="node-year">2024</div>
-                        <div class="node-dot"></div>
-                        <div class="node-desc">National News Network Recognitions</div>
-                    </div>
-                    <div class="timeline-node">
-                        <div class="node-year">2026</div>
-                        <div class="node-dot"></div>
-                        <div class="node-desc">Proudly Reached 2 Million+ Strong Family</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Footer -->
-    <footer id="contact">
-        <div class="container footer-grid">
-            <div class="reveal-blur">
-                <div class="section-title">Collaborate With Creative Science</div>
-                <h3 class="section-heading" style="font-size: 1.8rem;">Let's build the future together!</h3>
-                <ul class="check-list">
-                    <li class="check-item"><i class="fas fa-check-circle"></i> Business Inquiries</li>
-                    <li class="check-item"><i class="fas fa-check-circle"></i> Brand Partnerships</li>
-                    <li class="check-item"><i class="fas fa-check-circle"></i> Media Interviews</li>
-                    <li class="check-item"><i class="fas fa-check-circle"></i> Project Collaborations</li>
-                    <li class="check-item"><i class="fas fa-check-circle"></i> Engineering Consulting</li>
-                </ul>
-            </div>
-            <div class="reveal-blur">
-                <div class="section-title">Get In Touch</div>
-                <h3 class="section-heading" style="font-size: 1.8rem;">Drop an Email</h3>
-                <div class="contact-list">
-                    <div class="contact-item">
-                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-                        <div><div class="contact-label">Email</div><div class="contact-value">contact@creativescience.in</div></div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
-                        <div><div class="contact-label">Location</div><div class="contact-value">India</div></div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon"><i class="fas fa-clock"></i></div>
-                        <div><div class="contact-label">Response Time</div><div class="contact-value">Within 24 Hours</div></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container footer-bottom reveal-blur">
-            <div class="copy-text">&copy; 2026 Creative Science. All Rights Reserved.</div>
-            <button class="scroll-top" onclick="window.scrollTo(0,0)"><i class="fas fa-arrow-up"></i></button>
-        </div>
-    </footer>
+// ==============================================
+// MEDIA CARDS
+// ==============================================
+const mediaData = [
+    { name: "संदेश", color: "#ffffff", icon: "fa-newspaper" },
+    { name: "राजस्थान पत्रिका", color: "#ffffff", icon: "fa-pen-fancy" },
+    { name: "दिव्य भास्कर", color: "#ffffff", icon: "fa-star" },
+    { name: "ZEE NEWS", color: "#ffcc00", icon: "fa-tv" },
+    { name: "ABP NEWS", color: "#ffffff", icon: "fa-broadcast" },
+    { name: "आज तक", color: "#ff0000", icon: "fa-clock" }
+];
+function renderMediaCards() {
+    const track = document.getElementById('mediaTrack');
+    if(!track) return; track.innerHTML = ''; 
+    const doubleData = [...mediaData, ...mediaData];
+    doubleData.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'media-card';
+        let contentHtml = '';
+        if (item.img) contentHtml = `<img src="${item.img}" alt="${item.name}">`;
+        else if (item.icon) contentHtml = `<i class="fas ${item.icon}" style="font-size: 3.5rem; color: ${item.color || '#fff'};"></i>`;
+        card.innerHTML = `<div class="media-img-wrap">${contentHtml}</div><div class="media-name">${item.name}</div>`;
+        track.appendChild(card);
+    });
+}
 
-    <!-- Video Modal -->
-    <!-- Video Modal (Updated for both YouTube, MP4 & Instagram) -->
-    <div id="videoModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <div class="video-wrapper">
-                <!-- YOUTUBE IFRAME (Initially hidden) -->
-                <iframe id="videoIframe" src="" allow="autoplay; encrypted-media; fullscreen" allowfullscreen style="display:none;"></iframe>
-                
-                <!-- MP4 / INSTAGRAM VIDEO TAG (Initially hidden) -->
-                <video id="videoElement" controls autoplay style="display:none; width:100%; height:100%; background:#000; object-fit:contain;"></video>
-            </div>
-        </div>
-    </div>
 
-    <!-- Article Modal -->
-    <div id="articleModal" class="modal-overlay">
-        <div class="modal-box">
-            <span class="close-article-btn">&times;</span>
-            <div id="article-content" class="article-content">
-                <h2 id="article-title" style="color: var(--primary); margin-bottom: 15px;">Loading...</h2>
-                <img id="article-img" src="" style="width:100%; border-radius:10px; margin-bottom:20px; height: 250px; object-fit: cover;">
-                <p id="article-desc" style="color: #e2e8f0; line-height: 1.8;">Loading description...</p>
-                <button id="read-more-btn" class="btn btn-primary" style="margin-top:20px; width:100%;">Read Full Article</button>
-            </div>
-            <div id="webview-container" style="display:none; margin-top: 15px;">
-                <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
-                    <button id="back-to-article-btn" class="btn btn-outline" style="padding: 8px 16px; font-size:0.8rem;"><i class="fas fa-arrow-left"></i> Back</button>
-                    <span style="color:var(--text-muted); font-size:0.8rem; align-self:center;">Powered by Webview</span>
-                </div>
-                <iframe id="webview-iframe" src="" style="width:100%; height:400px; border:none; border-radius:8px; background:#fff;"></iframe>
-            </div>
-        </div>
-    </div>
+// ==============================================
+// TIMELINE
+// ==============================================
+const timelineContainer = document.querySelector('.timeline-container');
+if (timelineContainer) {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) timelineContainer.classList.add('active');
+        });
+    }, { threshold: 0.3 });
+    observer.observe(timelineContainer);
+}
 
-    <!-- 🎵 NEW: Sound Control Toggle Button -->
-    <div class="sound-control">
-        <span class="sound-label">SOUND:</span>
-        <button id="sound-btn" class="sound-btn">
-            <div class="equalizer">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </button>
-    </div>
 
-    <!-- ============================================== -->
-    <!-- 🟢 NEW: WEBSITE TRAFFIC TRACKER (Google Sheets) -->
-    <!-- ============================================== -->
-    <script>
-        async function trackVisitor() {
-            try {
-                // User ka IP aur Location fetch karein
-                const ipRes = await fetch('https://ipapi.co/json/');
-                const ipData = await ipRes.json();
-                
-                const location = `${ipData.city || 'Unknown'}, ${ipData.region || 'Unknown'}, ${ipData.country_name || 'Unknown'}`;
-                const deviceInfo = navigator.userAgent;
-                const screen = `${window.screen.width}x${window.screen.height}`;
-                const time = new Date().toISOString();
-                const referrer = document.referrer || "Direct";
-                const page = window.location.href;
+// ==============================================
+// 🎬 UPDATED VIDEO MODAL (Supports YouTube, MP4, and Google Drive)
+// ==============================================
+const modal = document.getElementById('videoModal');
+const iframe = document.getElementById('videoIframe');
+const videoElement = document.getElementById('videoElement');
+const closeBtn = document.querySelector('.close-btn');
 
-                const payload = {
-                    Timestamp: time,
-                    IP: ipData.ip || 'N/A',
-                    Location: location,
-                    Device: deviceInfo,
-                    Screen: screen,
-                    Referrer: referrer,
-                    Page: page
-                };
+document.addEventListener('click', function(e) {
+    const target = e.target.closest('.play-overlay, .js-video-play-btn');
+    if (target) {
+        e.stopPropagation(); 
+        let videoId = target.getAttribute('data-video-id');
+        if (!videoId) return;
 
-                // ⚠️ YAHAN APNA GOOGLE APPS SCRIPT URL PASTE KAREIN ⚠️
-                const API_URL = "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
-
-                await fetch(API_URL, {
-                    method: 'POST',
-                    mode: 'no-cors', // CORS error se bachne ke liye
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-                
-                console.log("Visitor tracked successfully!");
-            } catch (e) {
-                console.log("Tracking failed (expected on localhost or blocked):", e);
+        // 1. 🟠 Google Drive - Preview iframe mein chalao
+        if (videoId.includes('drive.google.com')) {
+            const match = videoId.match(/\/d\/([a-zA-Z0-9-_]+)/);
+            if (match && match[1]) {
+                const fileId = match[1];
+                iframe.style.display = 'block';
+                videoElement.style.display = 'none';
+                videoElement.pause();
+                videoElement.src = '';
+                iframe.src = `https://drive.google.com/file/d/${fileId}/preview?autoplay=1`;
+                modal.style.display = 'flex'; 
+                return;
             }
         }
 
-        // Page load par turant track karein
-        trackVisitor();
-    </script>
+        // 2. 🔵 Instagram - Naye tab me open (Abhi ke liye)
+        if (videoId.includes('instagram.com')) {
+            window.open(videoId, '_blank');
+            return;
+        }
 
-    <!-- Aapka existing script.js -->
-    <script src="script.js"></script>
-</body>
-</html>
+        // 3. 🟡 YouTube link (watch?v= ya youtu.be)
+        if (videoId.includes('youtube.com/watch?v=') || videoId.includes('youtu.be/')) {
+            try { 
+                const urlParams = new URLSearchParams(new URL(videoId).search); 
+                videoId = urlParams.get('v'); 
+            } catch (error) { 
+                const match = videoId.match(/[?&]v=([^&#]*)/);
+                if (match) videoId = match[1];
+            }
+            
+            iframe.style.display = 'block';
+            videoElement.style.display = 'none';
+            videoElement.pause();
+            videoElement.src = '';
+            iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+            modal.style.display = 'flex'; 
+            return;
+        }
+
+        // 4. 🔴 Direct MP4 files (ends with .mp4)
+        if (videoId.endsWith('.mp4')) {
+            iframe.style.display = 'none';
+            iframe.src = '';
+            videoElement.style.display = 'block';
+            videoElement.src = videoId;
+            modal.style.display = 'flex'; 
+            return;
+        }
+
+        // 5. 🟢 Plain YouTube Video IDs (length = 11)
+        if (videoId.length === 11) {
+            iframe.style.display = 'block';
+            videoElement.style.display = 'none';
+            videoElement.pause();
+            videoElement.src = '';
+            iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+            modal.style.display = 'flex'; 
+        }
+    }
+});
+
+function closeModal() { 
+    iframe.src = ''; 
+    videoElement.pause();
+    videoElement.src = '';
+    iframe.style.display = 'none';
+    videoElement.style.display = 'none';
+    modal.style.display = 'none'; 
+}
+
+closeBtn.addEventListener('click', closeModal);
+window.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.style.display === 'flex') closeModal(); });
+
+
+// ==============================================
+// INSTAGRAM STORY
+// ==============================================
+const storyData = [
+    { img: "https://c.ndtvimg.com/2023-04/t7pih0lo_robot_625x300_13_April_23.jpg", title: "Pull A Rickshaw", desc: "Surat Students Design Robot That Can Pull A Rickshaw.", link: "https://www.ndtv.com/india-news/surat-students-design-robot-that-can-pull-a-rickshaw-3944411" },
+    { img: "https://media.assettype.com/freepressjournal/2024-07/01de200c-cfac-4e09-8d57-c2153311e734/futuristiccar.jpg", title: "Tyreless Capsule Car", desc: "Tyreless Capsule Car: Surat's Engineering Students Redefine Future Mobility.", link: "https://www.freepressjournal.in/india/tyreless-capsule-car-surats-engineering-students-redefine-future-mobility" },
+    { img: "https://resize.indiatv.in/resize/newbucket/1200_675/2024/04/untitled-design-2024-04-04t135301-1712218982.webp", title: "मीडिया पर एक दौड़ती हुई झोपड़ी का वीडियो वायरल हो रहा है।", desc: "कुछ और नहीं सुझा तो बना दी सड़क पर दौड़ने वाली झोपड़ी, Video सोशल मीडिया पर हो रहा है वायरल.", link: "https://www.indiatv.in/viral/news/if-nothing-else-could-be-suggested-so-boys-built-a-running-hut-on-the-road-video-is-going-viral-on-social-media-2024-04-04-1036013" },
+    { img: "https://www.carblogindia.com/wp-content/uploads/2023/10/bajaj-pulsar-hubless-wheels-1024x576.jpg", title: "Homemade Bajaj Pulsar", desc: "This Homemade Bajaj Pulsar with Hubless Wheels Looks Sick", link: "https://www.carblogindia.com/homemade-bajaj-pulsar-hubless-wheels/" },
+    { img: "https://img-cdn.publive.online/fit-in/1280x960/filters:format(webp)/startuppedia/media/media_files/2025/09/29/cs-web-2025-09-29-13-01-27.png", title: "Garuda bike Ai", desc: "Meet the 24-Year-Old College Student from Surat Who Built India’s First AI-Powered Driverless Superbike", link: "https://www.aajtak.in/auto/news/story/engineering-students-from-surat-developed-ai-powered-driverless-and-hubless-electric-bike-garuna-dskc-2314881-2025-08-21" },
+    { img: "https://imgs.etvbharat.com/etvbharat/prod-images/23-04-2026/26532770_ghs2.png", title: " 'Ghost Cycle' That Pedals Itself", desc: "Surat innovator Shivam Maurya created a remote-controlled ‘Ghost Cycle’ with robotic legs that pedal themselves.' That Pedals Itself", link: "https://www.etvbharat.com/amp/en/technology/young-innovator-from-gujarat-unveils-ghost-cycle-that-pedals-itself-enn26042205666" },
+    { img: "https://www.carblogindia.com/wp-content/uploads/2023/07/one-wheeled-electric-bike.jpg", title: "One Wheeled KTM", desc: "This Homemade One Wheeled KTM Runs 40 km in 1 Rupee", link: "https://www.carblogindia.com/homemade-one-wheeled-ktm/" },
+];
+
+const storyImage = document.getElementById('story-image');
+const instantStory = document.getElementById('instant-story');
+let imgIndex = 0;
+
+if (storyImage) {
+    setInterval(() => {
+        imgIndex = (imgIndex + 1) % storyData.length;
+        storyImage.style.opacity = '0';
+        setTimeout(() => {
+            storyImage.src = storyData[imgIndex].img;
+            storyImage.style.opacity = '1';
+        }, 300);
+    }, 4000);
+}
+
+// Story Modal
+const articleModal = document.getElementById('articleModal');
+const closeArticleBtn = document.querySelector('.close-article-btn');
+const articleTitle = document.getElementById('article-title');
+const articleImg = document.getElementById('article-img');
+const articleDesc = document.getElementById('article-desc');
+const articleContent = document.getElementById('article-content');
+const webviewContainer = document.getElementById('webview-container');
+const webviewIframe = document.getElementById('webview-iframe');
+const readMoreBtn = document.getElementById('read-more-btn');
+const backToArticleBtn = document.getElementById('back-to-article-btn');
+
+if (instantStory && articleModal) {
+    instantStory.addEventListener('click', () => {
+        const currentData = storyData[imgIndex];
+        articleImg.src = currentData.img;
+        articleTitle.innerText = currentData.title;
+        articleDesc.innerText = currentData.desc;
+        articleContent.style.display = 'block';
+        webviewContainer.style.display = 'none';
+        webviewIframe.src = '';
+        articleModal.style.display = 'flex';
+    });
+}
+
+readMoreBtn.addEventListener('click', () => {
+    const currentData = storyData[imgIndex];
+    if(currentData.link) {
+        articleContent.style.display = 'none';
+        webviewContainer.style.display = 'block';
+        webviewIframe.src = currentData.link;
+    }
+});
+
+backToArticleBtn.addEventListener('click', () => {
+    webviewContainer.style.display = 'none';
+    webviewIframe.src = '';
+    articleContent.style.display = 'block';
+});
+
+if (closeArticleBtn && articleModal) {
+    closeArticleBtn.addEventListener('click', () => {
+        articleModal.style.display = 'none';
+        webviewIframe.src = '';
+    });
+    window.addEventListener('click', (e) => {
+        if (e.target === articleModal) {
+            articleModal.style.display = 'none';
+            webviewIframe.src = '';
+        }
+    });
+}
+
+
+// ==============================================
+// CUSTOM CURSOR
+// ==============================================
+const cursor = document.getElementById('custom-cursor');
+const trailContainer = document.getElementById('cursor-trail-container');
+let trail = [];
+
+for (let i = 0; i < 10; i++) {
+    let dot = document.createElement('div');
+    dot.className = 'trail-dot';
+    trailContainer.appendChild(dot);
+    trail.push({ el: dot, x: 0, y: 0 });
+}
+
+let mouseX = 0, mouseY = 0;
+document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    if(cursor) {
+        cursor.style.left = mouseX + 'px';
+        cursor.style.top = mouseY + 'px';
+    }
+});
+
+function animateTrail() {
+    let x = mouseX, y = mouseY;
+    trail.forEach((dot, index) => {
+        let nextDot = trail[index - 1];
+        if (nextDot) {
+            x += (nextDot.x - x) * 0.3;
+            y += (nextDot.y - y) * 0.3;
+        } else {
+            x += (mouseX - x) * 0.4;
+            y += (mouseY - y) * 0.4;
+        }
+        dot.x = x; dot.y = y;
+        dot.el.style.left = x + 'px'; dot.el.style.top = y + 'px';
+        let opacity = 0.7 - (index / trail.length) * 0.6;
+        let size = 8 - (index / trail.length) * 5;
+        dot.el.style.opacity = opacity;
+        dot.el.style.width = size + 'px';
+        dot.el.style.height = size + 'px';
+    });
+    requestAnimationFrame(animateTrail);
+}
+animateTrail();
+
+
+// ==============================================
+// 🎵 SOUND TOGGLE BUTTON LOGIC (Autoplay on First Scroll/Click)
+// ==============================================
+const bgMusic = document.getElementById('bg-music');
+const soundBtn = document.getElementById('sound-btn');
+
+function playAudio() {
+    if (bgMusic.paused) {
+        bgMusic.play().then(() => {
+            soundBtn.classList.remove('paused');
+            soundBtn.classList.add('playing');
+        }).catch((err) => console.log("Play error:", err));
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    bgMusic.play().then(() => {
+        soundBtn.classList.remove('paused');
+        soundBtn.classList.add('playing');
+    }).catch(() => {
+        const firstInteraction = () => {
+            playAudio();
+            document.removeEventListener('scroll', firstInteraction);
+            document.removeEventListener('click', firstInteraction);
+            document.removeEventListener('touchstart', firstInteraction);
+            document.removeEventListener('keydown', firstInteraction);
+        };
+        document.addEventListener('scroll', firstInteraction, { once: true });
+        document.addEventListener('click', firstInteraction, { once: true });
+        document.addEventListener('touchstart', firstInteraction, { once: true });
+        document.addEventListener('keydown', firstInteraction, { once: true });
+    });
+});
+
+soundBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (bgMusic.paused) {
+        bgMusic.play().then(() => {
+            soundBtn.classList.remove('paused');
+            soundBtn.classList.add('playing');
+        }).catch(err => console.log("Playback error:", err));
+    } else {
+        bgMusic.pause();
+        soundBtn.classList.remove('playing');
+        soundBtn.classList.add('paused');
+    }
+});
+
+if (bgMusic.paused) soundBtn.classList.add('paused');
+else soundBtn.classList.add('playing');
+
+bgMusic.addEventListener('play', () => {
+    soundBtn.classList.remove('paused');
+    soundBtn.classList.add('playing');
+});
+bgMusic.addEventListener('pause', () => {
+    soundBtn.classList.remove('playing');
+    soundBtn.classList.add('paused');
+});
+
+
+// ==============================================
+// INITIAL LOAD
+// ==============================================
+document.addEventListener('DOMContentLoaded', () => {
+    renderVideos('latest');
+    renderMediaCards();
+});
+
+// ==============================================
+// 🎬 AUTO YOUTUBE THUMBNAIL GENERATOR
+// ==============================================
+function autoLoadYoutubeThumbnails() {
+    const playOverlays = document.querySelectorAll('.play-overlay');
+    playOverlays.forEach(overlay => {
+        const videoUrl = overlay.getAttribute('data-video-id');
+        if (!videoUrl) return;
+
+        let videoId = '';
+        try {
+            const url = new URL(videoUrl);
+            videoId = url.searchParams.get('v');
+        } catch (e) {
+            const match = videoUrl.match(/[?&]v=([^&#]*)/);
+            if (match) videoId = match[1];
+        }
+        // Agar ID 11 chars ki hai aur 'instagram/drive' nahi hai
+        if (videoId && videoId.length === 11 && !videoUrl.includes('instagram') && !videoUrl.includes('drive.google')) {
+            const projectImg = overlay.previousElementSibling;
+            if (projectImg && projectImg.classList.contains('project-img')) {
+                const img = projectImg.querySelector('img');
+                if (img) {
+                    img.src = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+                    img.onerror = function() {
+                        this.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+                    };
+                }
+            }
+        }
+    });
+}
+document.addEventListener('DOMContentLoaded', autoLoadYoutubeThumbnails);
