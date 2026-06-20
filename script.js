@@ -87,13 +87,15 @@ function switchTab(category) {
 // MEDIA CARDS
 // ==============================================
 const mediaData = [
-    { name: "संदेश", color: "#ffffff", icon: "fa-newspaper" },
-    { name: "राजस्थान पत्रिका", color: "#ffffff", icon: "fa-pen-fancy" },
-    { name: "दिव्य भास्कर", color: "#ffffff", icon: "fa-star" },
-    { name: "ZEE NEWS", color: "#ffcc00", icon: "fa-tv" },
-    { name: "ABP NEWS", color: "#ffffff", icon: "fa-broadcast" },
-    { name: "आज तक", color: "#ff0000", icon: "fa-clock" }
+    { name: "USA TODAY", color: "#ffffff", img: "RE IMG/usa-today-logo-png_seeklogo-481935-removebg-preview.png" },
+    { name: "TIMES NOW", color: "#ffffff",img: "RE IMG/Screenshot_2026-06-18_155404-removebg-preview.png" },
+    { name: "THE TIMES OF INDIA", color: "#ffffff", img: "RE IMG/the-times-of-india-logo-png_seeklogo-398941-removebg-preview.png" },
+    { name: "ZEE NEWS", color: "#ffcc00", img: "zee-logo.png" },
+    { name: "ABP NEWS", color: "#ffffff", img: "RE IMG/ABP_News_logo.png" },
+    { name: "AAJ TAK", color: "#ff0000", img: "RE IMG/imgbin-aaj-tak-india-television-channel-living-media-india-bpAZEskKkcVYaFZAk0uPrx3A4-removebg-preview.png" },
+    {name: "AAJ TAK", color: "#ff0000", img: "RE IMG/News_18_India.png" },
 ];
+
 function renderMediaCards() {
     const track = document.getElementById('mediaTrack');
     if(!track) return; track.innerHTML = ''; 
@@ -219,9 +221,13 @@ document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.st
 // INSTAGRAM STORY
 // ==============================================
 const storyData = [
-    { img: "https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&q=80&w=150", title: "🏍️ AI Superbike Revolution", desc: "India's first custom-built AI-powered hubless wheel superbike. This engineering marvel uses advanced neural networks for self-balancing.", link: "https://en.wikipedia.org/wiki/Artificial_intelligence" },
-    { img: "https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&q=80&w=150", title: "🚀 Capsule EV Concept", desc: "A self-developed futuristic electric vehicle concept designed specifically for smart city pods. Eco-friendly and fully autonomous.", link: "https://en.wikipedia.org/wiki/Electric_vehicle" },
-    { img: "https://images.unsplash.com/photo-1608962714026-af9a77909d38?auto=format&fit=crop&q=80&w=150", title: "🤖 Walking Robot Innovation", desc: "Our human-inspired mechanical robotic mobility system showcases advanced structural balancing layouts.", link: "https://en.wikipedia.org/wiki/Robot" }
+    { img: "https://c.ndtvimg.com/2023-04/t7pih0lo_robot_625x300_13_April_23.jpg", title: "Pull A Rickshaw", desc: "Surat Students Design Robot That Can Pull A Rickshaw.", link: "https://www.ndtv.com/india-news/surat-students-design-robot-that-can-pull-a-rickshaw-3944411" },
+    { img: "https://media.assettype.com/freepressjournal/2024-07/01de200c-cfac-4e09-8d57-c2153311e734/futuristiccar.jpg", title: "Tyreless Capsule Car", desc: "Tyreless Capsule Car: Surat's Engineering Students Redefine Future Mobility.", link: "https://www.freepressjournal.in/india/tyreless-capsule-car-surats-engineering-students-redefine-future-mobility" },
+    { img: "https://resize.indiatv.in/resize/newbucket/1200_675/2024/04/untitled-design-2024-04-04t135301-1712218982.webp", title: "मीडिया पर एक दौड़ती हुई झोपड़ी का वीडियो वायरल हो रहा है।", desc: "कुछ और नहीं सुझा तो बना दी सड़क पर दौड़ने वाली झोपड़ी, Video सोशल मीडिया पर हो रहा है वायरल.", link: "https://www.indiatv.in/viral/news/if-nothing-else-could-be-suggested-so-boys-built-a-running-hut-on-the-road-video-is-going-viral-on-social-media-2024-04-04-1036013" },
+    { img: "https://www.carblogindia.com/wp-content/uploads/2023/10/bajaj-pulsar-hubless-wheels-1024x576.jpg", title: "Homemade Bajaj Pulsar", desc: "This Homemade Bajaj Pulsar with Hubless Wheels Looks Sick", link: "https://www.carblogindia.com/homemade-bajaj-pulsar-hubless-wheels/" },
+    { img: "https://img-cdn.publive.online/fit-in/1280x960/filters:format(webp)/startuppedia/media/media_files/2025/09/29/cs-web-2025-09-29-13-01-27.png", title: "Garuda bike Ai", desc: "Meet the 24-Year-Old College Student from Surat Who Built India’s First AI-Powered Driverless Superbike", link: "https://www.aajtak.in/auto/news/story/engineering-students-from-surat-developed-ai-powered-driverless-and-hubless-electric-bike-garuna-dskc-2314881-2025-08-21" },
+    { img: "https://imgs.etvbharat.com/etvbharat/prod-images/23-04-2026/26532770_ghs2.png", title: " 'Ghost Cycle' That Pedals Itself", desc: "Surat innovator Shivam Maurya created a remote-controlled ‘Ghost Cycle’ with robotic legs that pedal themselves.' That Pedals Itself", link: "https://www.etvbharat.com/amp/en/technology/young-innovator-from-gujarat-unveils-ghost-cycle-that-pedals-itself-enn26042205666" },
+    { img: "https://www.carblogindia.com/wp-content/uploads/2023/07/one-wheeled-electric-bike.jpg", title: "One Wheeled KTM", desc: "This Homemade One Wheeled KTM Runs 40 km in 1 Rupee", link: "https://www.carblogindia.com/homemade-one-wheeled-ktm/" },
 ];
 
 const storyImage = document.getElementById('story-image');
