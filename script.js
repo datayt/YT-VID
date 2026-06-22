@@ -7,7 +7,7 @@ const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('active');
-            revealObserver.unobserve(entry.target);
+            revealObserver.unobserve(entry.target); // Ek baar effect hone ke baad hata do
         }
     });
 }, {
@@ -54,7 +54,7 @@ const videoData = {
             time: "Dec 24, 2025", 
             duration: "0:22", 
             // ✅ FIX: Use a placeholder or your own image URL (Drive links don't work here)
-            img: "https://drive.google.com/uc?export=view&id=1mqPevHltcYE6RMbaCL4gnB6btEgZ2lbS", 
+            img: "https://lh3.googleusercontent.com/rd-d/ALs6j_F0R3MfcqEyvwrvDUrFC3fnxOY98J0d0CahVWi9jnUUWqpyyFrw7pyTlhmDBULpeN5HWd5Z-zsgU1UVCF9aXAoyEFfM-AQnTt0EgFrHkEq9d0rQyM1A0E9q4m6wejVYsiFYgGtMcmO2KMe38Y7esLbY6uA3ZYLPCWLyu45QqZylDor6gXe8FKZIWE3k0lma1auxobG_njZ9M_7ZoBnJ-zGk75KxyuMMvG5_8A7vAS7dEv5n2yxWZMV5pXexz5tBL3_t1iWFv1KUdsjye3PwhAunZ9S5OO0w-py7tqlK0t9qcu7s5T4Df2mNangZpy-hv7rY9ZmlwSf7HA6aX9AgSkDdfAncM4SsEfyeXTRM1U2ikHgtkxTOuYKsLLuduAJmvpYbbumX4XOaQ9q7juDIQBOo_FoMf9kizQxD6auytbhpkUGGKlzx-PlovujKy31Qz9-Knjx0GHCkUJsKTVjFS2v435PQr1OG6i-iM_kveRgu8cHc9bW1t2RoEjuzVIaWrGkTYa6Db1LVJ0Loy2JVkYzvfJaLou0aKU5yWQLK14DIcwkYBHLoCyCacN7goXhyolL3Vx46SiNI4AN422S776EaAYw5s17lsFWB41AD-qLTEsFCjVqp8HMVCWLl_qK5gBIGCcHMscyraUsKMChx1EfJLbUC1fG4jzxLO53xFODVik0VwVckF2kRNTJ5bg60EawaDxJPMfhHrwZLF6paAFIkneE27mXIc22H5EurjzA9oZUCC7APpsUz2PZVcYLKmTFjAcwxxgYml6zC_MdUbuFmVdJGkMEDyqBcO-lkU_OPYqtJvqmw60dhVL0SZWASujKorzY4fpesBj93dnPpGh3Sv0pFn4X_5VelNk5_69xgedKlZmGEUPMYvf_OPiUhMZ1n5BmBobuVsBppQqdp8ucB4AEkQ3gxZn3rFRverL5h-SIfczZXkVMlT1VQ_QhUFbHgKHzEPBGyzojxN0DOyO7ICLqwiCylshJ83-b1m5M6YxP-qnRZdPo_zgxYPv89JmHAb3PrrREpXDlO-F0PpsDHk0vb6jKnUdW59ek2pDdIEiNRY-XHi2KL1XiGyejLM_4ajPUgezvvfhWx93qRbEF_93IQ=w1921-h914?auditContext=prefetch",  
             // ✅ Video link stays as Google Drive (This works perfectly in the modal)
             videoId: "https://drive.google.com/file/d/1FHy30LQgaTL6W3eBBr7tQbvfbS5Dpi68/view?usp=sharing" 
         }
@@ -136,8 +136,13 @@ const closeBtn = document.querySelector('.close-btn');
 
 document.addEventListener('click', function(e) {
     const target = e.target.closest('.play-overlay, .js-video-play-btn');
+
     if (target) {
+
         e.stopPropagation(); 
+        // 🔥 Ye 2 lines mobile par click ko force karengi:
+        target.style.pointerEvents = 'auto'; 
+        target.style.cursor = 'pointer';
         let videoId = target.getAttribute('data-video-id');
         if (!videoId) return;
 
@@ -449,3 +454,48 @@ function autoLoadYoutubeThumbnails() {
     });
 }
 document.addEventListener('DOMContentLoaded', autoLoadYoutubeThumbnails);
+
+// Auto Highlight Nav Link on Scroll
+const sections = document.querySelectorAll('section[id]');
+window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (scrollY >= sectionTop - 120) {
+            current = section.getAttribute('id');
+        }
+    });
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+        }
+    });
+});
+
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// YouTube Subscriber Counter (Use a free API like "youtube-subscriber-count")
+async function getSubs() {
+    try {
+        const res = await fetch('https://api.countapi.xyz/get/youtube/@CreativeScienceOfficial'); // Apna Channel ID daalo
+        const data = await res.json();
+        if(data.value) document.querySelector('.stat-item h3').innerText = data.value + '+';
+    } catch(e) { console.log("API limit hit"); }
+}
+getSubs();
+
+/* ============================================================
+   PWA (PROGRESSIVE WEB APP) REGISTRATION
+   ============================================================ */
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+            .then(registration => {
+                console.log('PWA ServiceWorker registered:', registration);
+            })
+            .catch(error => {
+                console.log('PWA ServiceWorker registration failed:', error);
+            });
+    });
+}
