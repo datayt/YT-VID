@@ -123,9 +123,28 @@ header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; backgroun
 .nav-link:hover, .nav-link.active { color: var(--primary); }
 .nav-actions { display: flex; align-items: center; gap: 16px; }
 .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; }
-.hero { padding-top: 140px; padding-bottom: 60px; position: relative; background-image: url('shivam-profile.png'); background-size: cover; background-position: right center; background-repeat: no-repeat; background-position-y:80px; background-position-x:470px;}
-.hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to left, transparent 0%, rgba(6, 9, 14, 0.8) 40%, rgba(6, 9, 14, 1) 80%); pointer-events: none; z-index: 1; }
-.hero-grid { position: relative; z-index: 2; }
+.hero { 
+    padding-top: 140px; 
+    padding-bottom: 60px; 
+    position: relative; 
+    background-image: url('shivam-profile.png'); 
+    background-size: cover; 
+    background-position: right center; 
+    background-repeat: no-repeat; 
+    background-position-y:80px; 
+    background-position-x:470px; 
+}
+.hero::before { 
+    content: ''; 
+    position: absolute; 
+    inset: 0; 
+    background: linear-gradient(to left, transparent 0%, rgba(6, 9, 14, 0.8) 40%, rgba(6, 9, 14, 1) 80%); 
+    pointer-events: none; z-index: 1; 
+}
+.hero-grid { 
+    position: relative; 
+    z-index: 2; 
+}
 .hero-tag { color: var(--primary); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
 .hero-title { font-size: 3.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 8px; }
 .hero-subtitle { font-size: 1.4rem; color: var(--primary); font-weight: 600; margin-bottom: 16px; }
@@ -308,8 +327,9 @@ footer { background-color: var(--bg-card); border-top: 1px solid var(--border-co
 
 /* Mobile Responsive */
 @media (max-width: 992px) {
+
     .hero-grid, .about-grid, .youtube-layout, .footer-grid { grid-template-columns: 1fr; gap: 40px; }
-    .hero-title { font-size: 2.8rem; } .hero { background-position: center top; }
+    .hero-title { font-size: 2.8rem; } .hero { background-position: 32% top; }
     .stats-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; }
     .projects-grid { grid-template-columns: repeat(3, 1fr); }
     .timeline-line { left: 20px; top: 0; width: 4px !important; height: 0; transition: height 1.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
@@ -333,6 +353,7 @@ footer { background-color: var(--bg-card); border-top: 1px solid var(--border-co
     .sound-btn { width: 44px; height: 44px; }
 }
 @media (max-width: 480px) {
+    
     .hero-title { font-size: 2rem; line-height: 1.2; }
     .hero-subtitle { font-size: 1.1rem; }
     .hero-desc { font-size: 0.95rem; }
@@ -446,3 +467,38 @@ footer { background-color: var(--bg-card); border-top: 1px solid var(--border-co
 .inquiry-form input:focus, .inquiry-form textarea:focus { border-color: #00d4ff; }
 .btn-submit { width: 100%; padding: 8px; background: #fff; color: #000; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
 .btn-submit:hover { background: #eee; }
+
+/* --- Social Icons Row (Horizontal Line) --- */
+.social-row {
+    display: flex;
+    justify-content: center;  /* Beech mein center karega */
+    gap: 12px;                /* Icons ke beech ka gap */
+    margin-bottom: 15px;      /* Send Inquiry button se upar ka gap */
+    padding-top: 5px;
+}
+
+/* --- Premium Glass Transparent Icon --- */
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;              /* Small size */
+    height: 36px;
+    border-radius: 50%;       /* Perfect circle around icon */
+    background: rgba(255, 255, 255, 0.75);  /* Light transparent for Black icon visibility */
+    backdrop-filter: blur(6px);  /* Glass blur effect */
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #000000;           /* 🔥 BLACK ICON COLOUR */
+    font-size: 16px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Premium shadow */
+}
+
+/* --- Hover Effect --- */
+.social-icon:hover {
+    transform: scale(1.1) translateY(-3px);  /* Upar ki taraf uthne ka effect */
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.6);
