@@ -374,7 +374,7 @@ footer { background-color: var(--bg-card); border-top: 1px solid var(--border-co
     .logo-text span { font-size: 0.65rem; }
 
     /* Hero Section */
-    .hero { padding-top: 90px !important; padding-bottom: 30px !important; background-position: center top !important; background-size: cover; }
+    .hero { padding-top: 90px !important; padding-bottom: 30px !important; background-position: 30% top !important; background-size: cover; }
     .hero-title { font-size: 2rem !important; }
     .hero-subtitle { font-size: 1.2rem !important; }
     .hero-desc { font-size: 0.9rem !important; max-width: 100%; }
