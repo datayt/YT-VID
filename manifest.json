@@ -1,0 +1,22 @@
+{
+  "name": "Creative Science",
+  "short_name": "CreativeSci",
+  "description": "Shivam Maurya - India's Innovative Creator",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#06090e",
+  "theme_color": "#ff6a00",
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
