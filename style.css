@@ -614,7 +614,7 @@ footer { background-color: var(--bg-card); border-top: 1px solid var(--border-co
     .nav-container { height: 56px !important; }
     .nav-menu { top: 56px; height: calc(100vh - 56px); }
     .hero { padding-top: 80px !important; background-position: 20% top; }
-    .hero-title { font-size: 1.6rem !important; }
+    .hero-title { font-size: 3rem !important; margin-bottom:64px; margin-top: 39px;
     .hero-subtitle { font-size: 1rem !important; }
     .hero-desc { font-size: 0.85rem !important; }
     .hero-buttons .btn { padding: 10px; font-size: 0.85rem; }
