@@ -3,12 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <meta name="description" content="Shivam Maurya - Founder of Creative Science. India's innovative creator building futuristic vehicles and robotics.">
+    <meta name="keywords" content="Creative Science, Shivam Maurya, robotics, AI superbike, innovation, India, Garuda AI Bike">
     <title>Creative Science | Shivam Maurya</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#ff6a00">
 </head>
 <body>
 
@@ -92,7 +97,7 @@
     <!-- About -->
     <section class="section-padding" id="about">
         <div class="container about-grid">
-            <div class="about-image reveal-blur"><img src="IMG-INFO.jpeg" alt="Shivam Working"></div>
+            <div class="about-image reveal-blur"><img src="IMG-INFO.jpeg" loading="lazy" alt="Shivam Working"></div>
             <div class="about-content reveal-blur">
                 <div class="section-title">About Me</div>
                 <h3 class="section-heading">About Shivam Maurya</h3>
@@ -292,18 +297,18 @@
 <!-- Footer Bottom -->
 <div class="container footer-bottom reveal-blur">
     <div class="footer-copyright">
-        <span class="copy-text">&copy; 2026 Creative Science. All Rights Reserved.</span>
+        <span class="copy-text">&copy; 2026 To <span id="year"></span> Creative Science. All Rights Reserved.</span>
         <button class="help-btn" id="helpToggle">?</button>
     </div>
     <button class="scroll-top" onclick="window.scrollTo(0,0)"><i class="fas fa-arrow-up"></i></button>
 </div>
 
-<!-- Popup Modal (Footer ke neeche rakhein) -->
+<!-- Popup Modal -->
 <div class="help-popup" id="helpPopup">
     <button class="close-popup" id="closePopup">×</button>
     
     <div class="agency-name">
-        <h4>🚀 Built by <span>Gen-z Gravity.co Agency</span></h4>
+        <h4>🚀 Built by <span>Creative Science Agency</span></h4>
         <p>Your digital growth partner.</p>
     </div>
     
@@ -313,12 +318,31 @@
         <span class="service-tag">📱 Social Media</span>
     </div>
     
-    <form class="inquiry-form" id="inquiryForm">
-        <input type="text" id="inqName" placeholder="Your Name" required>
-        <input type="email" id="inqEmail" placeholder="Your Email" required>
-        <textarea id="inqMsg" placeholder="Project requirements..." rows="3" required></textarea>
-        <button type="submit" class="btn-submit">Send Inquiry ➜</button>
-    </form>
+    <!-- Inquiry Form -->
+<form class="inquiry-form" id="inquiryForm">
+    <input type="text" id="inqName" placeholder="Your Name" required>
+    <input type="email" id="inqEmail" placeholder="Your Email" required>
+    <textarea id="inqMsg" placeholder="Project requirements..." rows="3" required></textarea>
+    
+    <!-- 🔥 YAHAN SOCIAL ICONS ADD KAREIN (Button ke upar) -->
+    <div class="social-row">
+        <a href="https://instagram.com/your_id" target="_blank" class="social-icon" title="Instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://linkedin.com/in/your_id" target="_blank" class="social-icon" title="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://youtube.com/@your_channel" target="_blank" class="social-icon" title="YouTube">
+            <i class="fab fa-youtube"></i>
+        </a>
+        <a href="https://creativescience.in" target="_blank" class="social-icon" title="Website">
+            <i class="fas fa-globe"></i>
+        </a>
+    </div>
+    <!-- 🔥 ICONS YAHAN KHATAM -->
+
+    <button type="submit" class="btn-submit">Send Inquiry ➜</button>
+</form>
 </div>
 
     </footer>
@@ -455,6 +479,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 </script>
+
+<!-- 3D Particle Background Canvas -->
+<div id="particle-canvas"></div>
 
 </body>
 </html>
