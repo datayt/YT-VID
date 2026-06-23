@@ -503,8 +503,8 @@ footer { background-color: var(--bg-card); border-top: 1px solid var(--border-co
         box-shadow: none !important;
     }
     .project-card .project-img {
-        width: 100px !important;        /* Image ki fixed width */
-        height: 80px !important;        /* Image ki fixed height */
+        width: 150px !important;        /* Image ki fixed width */
+        height: 100px !important;        /* Image ki fixed height */
         flex-shrink: 0 !important;      /* Image kabhi chhoti nahi hogi */
         border-radius: 8px !important;
         overflow: hidden !important;
@@ -522,6 +522,8 @@ footer { background-color: var(--bg-card); border-top: 1px solid var(--border-co
         height: 32px !important;
         transform: translate(-50%, -50%) !important;
         box-shadow: 0 2px 8px rgba(0,0,0,0.5) !important;
+        top: 55%;
+        left: 65%;
 
         /* 🟢 TRANSPARENT GLASS EFFECT */
         background: rgba(255, 255, 255, 0.15) !important; 
