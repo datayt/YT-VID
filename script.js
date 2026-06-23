@@ -47,21 +47,21 @@ document.querySelectorAll('.nav-link').forEach(link => {
 // ==============================================
 const videoData = {
     latest: [
-        { title: "I made an Smart Dustbin", views: " ~ views", time: "Nov 15, 2025", duration: "06:39", img: "https://img.youtube.com/vi/0IS1TLAoP20/maxresdefault.jpg", videoId: "0IS1TLAoP20" }, 
+        { title: "The Projects That Made History in India and the World!", views: " ~ ", time: "Nov 15, 2025", duration: "06:39", img: "https://img.youtube.com/vi/0IS1TLAoP20/maxresdefault.jpg", videoId: "0IS1TLAoP20" },
         { 
-            title: "Smart Dustbin (Google Drive)", 
+            title: "Futuristic Driverless Hubless Electric Bike", 
             views: " ~ views", 
             time: "Dec 24, 2025", 
             duration: "0:22", 
             // ✅ FIX: Use a placeholder or your own image URL (Drive links don't work here)
             img: "https://lh3.googleusercontent.com/rd-d/ALs6j_F0R3MfcqEyvwrvDUrFC3fnxOY98J0d0CahVWi9jnUUWqpyyFrw7pyTlhmDBULpeN5HWd5Z-zsgU1UVCF9aXAoyEFfM-AQnTt0EgFrHkEq9d0rQyM1A0E9q4m6wejVYsiFYgGtMcmO2KMe38Y7esLbY6uA3ZYLPCWLyu45QqZylDor6gXe8FKZIWE3k0lma1auxobG_njZ9M_7ZoBnJ-zGk75KxyuMMvG5_8A7vAS7dEv5n2yxWZMV5pXexz5tBL3_t1iWFv1KUdsjye3PwhAunZ9S5OO0w-py7tqlK0t9qcu7s5T4Df2mNangZpy-hv7rY9ZmlwSf7HA6aX9AgSkDdfAncM4SsEfyeXTRM1U2ikHgtkxTOuYKsLLuduAJmvpYbbumX4XOaQ9q7juDIQBOo_FoMf9kizQxD6auytbhpkUGGKlzx-PlovujKy31Qz9-Knjx0GHCkUJsKTVjFS2v435PQr1OG6i-iM_kveRgu8cHc9bW1t2RoEjuzVIaWrGkTYa6Db1LVJ0Loy2JVkYzvfJaLou0aKU5yWQLK14DIcwkYBHLoCyCacN7goXhyolL3Vx46SiNI4AN422S776EaAYw5s17lsFWB41AD-qLTEsFCjVqp8HMVCWLl_qK5gBIGCcHMscyraUsKMChx1EfJLbUC1fG4jzxLO53xFODVik0VwVckF2kRNTJ5bg60EawaDxJPMfhHrwZLF6paAFIkneE27mXIc22H5EurjzA9oZUCC7APpsUz2PZVcYLKmTFjAcwxxgYml6zC_MdUbuFmVdJGkMEDyqBcO-lkU_OPYqtJvqmw60dhVL0SZWASujKorzY4fpesBj93dnPpGh3Sv0pFn4X_5VelNk5_69xgedKlZmGEUPMYvf_OPiUhMZ1n5BmBobuVsBppQqdp8ucB4AEkQ3gxZn3rFRverL5h-SIfczZXkVMlT1VQ_QhUFbHgKHzEPBGyzojxN0DOyO7ICLqwiCylshJ83-b1m5M6YxP-qnRZdPo_zgxYPv89JmHAb3PrrREpXDlO-F0PpsDHk0vb6jKnUdW59ek2pDdIEiNRY-XHi2KL1XiGyejLM_4ajPUgezvvfhWx93qRbEF_93IQ=w1921-h914?auditContext=prefetch",  
             // ✅ Video link stays as Google Drive (This works perfectly in the modal)
-            videoId: "https://drive.google.com/file/d/1FHy30LQgaTL6W3eBBr7tQbvfbS5Dpi68/view?usp=sharing" 
+            videoId: "YGBG_g4nI8Y" 
         }
     ],
-    popular: [{ title: "Building a Functional Hubless Bicycle from Scratch!", views: "5.4M views", time: "1 year ago", duration: "11:20", img: "https://img.youtube.com/vi/P_4IT_zwojw/maxresdefault.jpg", videoId: "s_WCm5PMzmk" }, { title: "Transforming Old Junk into an Offroad Delivery Droid", views: "3.1M views", time: "8 months ago", duration: "15:20", img: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=350", videoId: "dQw4w9WgXcQ" }],
-    playlist: [{ title: "Robotics Systems Full Engineering Playlists", views: "12 videos", time: "Updated Yesterday", duration: "PLAYLIST", img: "", videoId: "s_WCm5PMzmk" }, { title: "Electric Vehicle Concepts Complete Engineering Log", views: "8 videos", time: "Updated 2 weeks ago", duration: "PLAYLIST", img: "https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&q=80&w=350", videoId: "dQw4w9WgXcQ" }],
-    shorts: [{ title: "Testing the Hubless wheel load capacity!", views: "12M views", time: "5 days ago", duration: "0:58", img: "https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&q=80&w=350", videoId: "s_WCm5PMzmk" }, { title: "When your robot learns to balance itself 😂", views: "8.4M views", time: "1 month ago", duration: "0:42", img: "https://images.unsplash.com/photo-1608962714026-af9a77909d38?auto=format&fit=crop&q=80&w=350", videoId: "dQw4w9WgXcQ" }]
+    popular: [{ title: "Pakistani Reaction to 🇮🇳 Walking Robot 😱🔥", views: " ~ ", time: " Feb 20 ", duration: "00:31", img: "https://i.ibb.co/7tGvHZ5N/YT-TB.png", videoId: "AKrjvE8_A3E" }, { title: "Pakistani Reaction on Indian Future bike", views: " ~ ", time: " Oct 3 ", duration: "00:35", img: "https://i.ibb.co/Hp99BDXg/YT-TB2.png", videoId: "81g-9mzqngM" }],
+    playlist: [{ title: "Robot Rickshaw Creative Science Project | News Report Style by India Today", views: " ~ ", time: "Updated", duration: " News ", img: "https://i.ibb.co/JRffvZ94/YT-TB3.png", videoId: "QmTgbgWWR54" }, { title: " Robot Rickshaw Creative Science Project | News Report Style by Asian News Internation ", views: " ~ ", time: "Updated", duration: " NEWS ", img: "https://i.ibb.co/xqfFLh2y/YT-TB4.png", videoId: "r7K8oYJwQ5o" }],
+    shorts: [{ title: "News nation Ghost cycle gone viral… ", views: " ~ ", time: " Updated ", duration: " news ", img: "https://i.ibb.co/0wC7H0z/YT-TB5.png", videoId: "X8VKXKMohPg" }, { title: "Driverless Garuda AI-Bike #shorts #trending #viral", views: " ~ ", time: " Updated ", duration: " aajtak ", img: "https://i.ibb.co/TDsVSPN9/YT-TB6.png", videoId: "zuX9znkTtqg" }]
 };
 
 function renderVideos(category) {
@@ -490,7 +490,7 @@ getSubs();
    ============================================================ */
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-       navigator.serviceWorker.register('/YT-VID/sw.js', { scope: '/YT-VID/' })
+        navigator.serviceWorker.register('/sw.js')
             .then(registration => {
                 console.log('PWA ServiceWorker registered:', registration);
             })
