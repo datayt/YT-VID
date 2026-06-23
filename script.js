@@ -490,7 +490,7 @@ getSubs();
    ============================================================ */
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
+       navigator.serviceWorker.register('/YT-VID/sw.js', { scope: '/YT-VID/' })
             .then(registration => {
                 console.log('PWA ServiceWorker registered:', registration);
             })
