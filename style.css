@@ -446,9 +446,13 @@ footer { background-color: var(--bg-card); border-top: 1px solid var(--border-co
     .stats-grid {
         grid-template-columns: repeat(5, 1fr) !important;
         gap: 6px !important;      /* Gap kam taaki ek line mein fit ho */
-        padding: 15px 0 !important;
+        padding: 20px 0 !important;
     }
     
+    .stats-bar {
+        padding:0px 0;
+    }
+
     /* Icon ka size chhota kiya */
     .stat-icon {
         font-size: 1.2rem !important;
@@ -457,19 +461,20 @@ footer { background-color: var(--bg-card); border-top: 1px solid var(--border-co
     
     /* Number (2M+, 380M+) ka font chhota kiya */
     .stat-item h3 {
-        font-size: 1rem !important;
+        font-size: 0.8rem !important;
         margin-bottom: 0px !important;
     }
     
     /* Description text ka font bahut chhota kiya */
     .stat-item p {
-        font-size: 0.55rem !important;
+        font-size: 0.45rem !important;
         letter-spacing: 0.5px !important;
         line-height: 1.2 !important;
     }
 
     /* About */
     .about-grid { gap: 30px; }
+    .section-padding { padding: 15px 0 }
     .section-heading { font-size: 1.6rem !important; }
     .about-image img { width: 100%; height: auto; object-position: center; }
 
