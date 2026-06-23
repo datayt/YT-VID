@@ -188,8 +188,8 @@ header {
     position: relative; 
     z-index: 2; 
 }
-.hero-tag { color: var(--primary); font-weight: 700; font-size: 1.5rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
-.hero-title { font-size: 3.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 30px; margin-top: 10px }
+.hero-tag { color: var(--primary); font-weight: 700; font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+.hero-title { font-size: 3.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 15px; margin-top: 10px }
 .hero-subtitle { font-size: 1.4rem; color: var(--primary); font-weight: 600; margin-bottom: 16px; }
 .hero-stats-line { font-size: 0.95rem; color: #ffffff; margin-bottom: 24px; }
 .hero-desc { color: var(--text-muted); max-width: 540px; margin-bottom: 32px; font-size: 1.05rem; }
@@ -433,12 +433,12 @@ footer { background-color: var(--bg-card); border-top: 1px solid var(--border-co
         padding-top: 20px; /* Header ke neeche thoda gap dega */
     }
     .hero-title { font-size: 6rem !important; margin-bottom:64px; margin-top: 39px; }
-    .hero-subtitle { font-size: 1.3rem !important; }
-    .hero-desc { font-size: 1.6rem !important; max-width: 100%; }
+    .hero-subtitle { font-size: 0.7rem !important; }
+    .hero-desc { font-size: 0.9rem !important; max-width: 100%; }
     .hero-stats-line { font-size: 1rem !important; margin-bottom:24px; }
-    .hero-buttons { flex-direction: column; gap: 30px; width: 100%; }
-    .hero-buttons .btn { width: 90%; justify-content: center; padding: 14px; font-size: 1.5rem; }
-    .social-row { flex-wrap: wrap; gap: 8px; justify-content: center; padding-top: 142px; }
+    .hero-buttons { flex-direction: column; gap: 9px; width: 100%; }
+    .hero-buttons .btn { width: 90%; justify-content: center; padding: 14px; font-size: 0.8rem; }
+    .social-row { flex-wrap: wrap; gap: 8px; justify-content: center; padding-top: 0px; }
     .social-row .social-icon { width: 34px; height: 34px; font-size: 14px; }
 
     /* Stats */
@@ -614,7 +614,7 @@ footer { background-color: var(--bg-card); border-top: 1px solid var(--border-co
     .nav-container { height: 56px !important; }
     .nav-menu { top: 56px; height: calc(100vh - 56px); }
     .hero { padding-top: 80px !important; background-position: 20% top; }
-    .hero-title { font-size: 3rem !important; margin-bottom:64px; margin-top: 39px;
+    .hero-title { font-size: 3rem !important; margin-bottom:8px; margin-top: 3px;
     .hero-subtitle { font-size: 1rem !important; }
     .hero-desc { font-size: 0.85rem !important; }
     .hero-buttons .btn { padding: 10px; font-size: 0.85rem; }
