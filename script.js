@@ -499,3 +499,29 @@ if ('serviceWorker' in navigator) {
             });
     });
 }
+
+// ==============================================
+// MOBILE STATS AUTO-SCROLL (Duplicate items for seamless loop)
+// ==============================================
+function setupMobileStatsScroll() {
+    const statsTrack = document.querySelector('.stats-track');
+    if (!statsTrack) return;
+
+    // Mobile par hi duplicate karein
+    if (window.innerWidth <= 768) {
+        // Agar pehle se duplicate nahi hai (10 items se kam hai)
+        if (statsTrack.querySelectorAll('.stat-item').length < 10) {
+            const items = statsTrack.querySelectorAll('.stat-item');
+            const fragment = document.createDocumentFragment();
+            items.forEach(item => {
+                const clone = item.cloneNode(true);
+                fragment.appendChild(clone);
+            });
+            statsTrack.appendChild(fragment);
+        }
+    }
+}
+
+// Run on load and resize
+document.addEventListener('DOMContentLoaded', setupMobileStatsScroll);
+window.addEventListener('resize', setupMobileStatsScroll);
