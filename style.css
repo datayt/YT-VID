@@ -68,7 +68,7 @@
 
 /* Instagram Story */
 #instant-story {
-    position: fixed; bottom: 25px; left: 25px; width: 70px; height: 70px;
+    position: fixed; bottom: 30px; left: 25px; width: 70px; height: 70px;
     border-radius: 50%; z-index: 9999; cursor: pointer; display: block !important;
     opacity: 1 !important; visibility: visible !important; transition: transform 0.3s ease;
     box-shadow: 0 0 25px rgba(255, 106, 0, 0.2);
@@ -173,7 +173,7 @@ header {
 .hero-subtitle { font-size: 1.4rem; color: var(--primary); font-weight: 600; margin-bottom: 16px; }
 .hero-stats-line { font-size: 0.95rem; color: #ffffff; margin-bottom: 24px; }
 .hero-desc { color: var(--text-muted); max-width: 540px; margin-bottom: 32px; font-size: 1.05rem; }
-.hero-buttons { display: flex; gap: 16px; margin-bottom: 32px; flex-wrap: wrap; }
+.hero-buttons { display: flex; gap: 16px; margin-bottom: 32px; flex-wrap: wrap; width:39%; }
 .social-row { display: flex; gap: 16px; }
 .social-icon { width: 40px; height: 40px; background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--text-muted); }
 .social-icon:hover { background-color: var(--primary); color: #fff; border-color: var(--primary); transform: translateY(-3px); }
@@ -254,15 +254,6 @@ header {
     scroll-snap-align: start !important;
 }
 
-/* Mobile override: card takes 85% of screen */
-@media (max-width: 768px) {
-    .video-card {
-        flex: 0 0 100% !important;      /* Mobile: fills most of screen */
-        min-width: 200px !important;
-        max-width: 360px !important;
-            scroll-snap-align: start !important;
-    }
-}
 
 
 .video-thumb { position: relative; aspect-ratio: 16/9; background-color: #000; cursor: pointer; overflow: hidden; }
@@ -391,21 +382,83 @@ footer { background-color: var(--bg-card); border-top: 1px solid var(--border-co
     .logo-img { width: 34px; height: 34px; }
     .logo-text h1 { font-size: 1rem; }
     .logo-text span { font-size: 0.65rem; }
-    .hero { min-height: 100vh !important; display: flex !important; align-items: lastbaseline; !important; padding-top: 14% !important; padding-bottom: 0 !important; background-position: 30% top !important; background-size: cover; }
-    .hero-content { width: 100%; padding-top: 20px; }
-    .hero-title { font-size: 6rem !important; margin-bottom:64px; margin-top: 39px; }
-    .hero-subtitle { font-size: 0.7rem !important; }
+    /* ✅ FIX: Hero on mobile – proper centering */
+    .hero {
+        min-height: 100vh !important;
+        display: flex !important;
+        align-items: flex-end !important;  /* Fixed from lastbaseline */
+        justify-content: center !important;
+        padding: 80px 0 40px !important;
+        background-position: 30% top !important;
+        background-size: cover !important;
+    }
+    .hero-content { width: 100%; padding-top: 0; }
+    .hero-title { font-size: 3.5rem !important; margin-bottom: 20px; margin-top: 0; }
+    .hero-subtitle { font-size: 1rem !important; }
     .hero-desc { font-size: 0.9rem !important; max-width: 100%; }
-    .hero-stats-line { font-size: 1rem !important; margin-bottom:24px; }
+    .hero-stats-line { font-size: 1rem !important; margin-bottom: 24px; }
     .hero-buttons { flex-direction: column; gap: 9px; width: 100%; }
-    .hero-buttons .btn { width: 90%; justify-content: center; padding: 14px; font-size: 0.8rem; }
+    .hero-buttons .btn { width: 100%; justify-content: center; padding: 14px; font-size: 0.9rem; }
     .social-row { flex-wrap: wrap; gap: 8px; justify-content: center; padding-top: 0px; }
-    .social-row .social-icon { width: 34px; height: 34px; font-size: 14px; }
-    .stats-grid { grid-template-columns: repeat(5, 1fr) !important; gap: 6px !important; padding: 20px 0 !important; }
-    .stats-bar { padding:0px 0; }
-    .stat-icon { font-size: 1.2rem !important; margin-bottom: 2px !important; }
-    .stat-item h3 { font-size: 0.8rem !important; margin-bottom: 0px !important; }
-    .stat-item p { font-size: 0.45rem !important; letter-spacing: 0.5px !important; line-height: 1.2 !important; }
+    .social-row .social-icon { width: 44px; height: 44px; font-size: 18px; } /* Larger tap targets */
+    
+
+    .stat-icon { font-size: 1.4rem !important; margin-bottom: 2px !important; }
+    .stat-item h3 { font-size: 1rem !important; margin-bottom: 0px !important; }
+    .stat-item p { font-size: 0.55rem !important; letter-spacing: 0.5px !important; line-height: 1.2 !important; }
+
+        /* 🟢 NEW: Stats Horizontal Auto-Scroll for Mobile */
+    .stats-bar {
+        padding: 5px 0 !important; /* hight -10 & +10 */
+    }
+    .stats-grid {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow: hidden !important;
+        width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+
+        grid-template-columns: repeat(5, 1fr) !important;
+        gap: 6px !important;
+        padding: 20px 0 !important;
+    }
+    .stats-track {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        gap: 5px !important;
+        animation: scroll-left 20s linear infinite !important; /* Same media animation */
+        width: max-content !important;
+        padding: 0 10px !important;
+    }
+    .stats-track:hover {
+        animation-play-state: paused !important;
+    }
+    .stat-item {
+        flex: 0 0 auto !important;
+        min-width: 100px !important; /* Proper width for each stat */
+        padding: 5px 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 0.2rem !important;
+    }
+    .stat-icon {
+        font-size: 1.5rem !important;
+        margin-bottom: 2px !important;
+    }
+    .stat-item h3 {
+        font-size: 1.1rem !important;
+        margin-bottom: 0px !important;
+    }
+    .stat-item p {
+        font-size: 0.5rem !important;
+        letter-spacing: 0.5px !important;
+        line-height: 1.2 !important;
+        white-space: nowrap !important;
+    }
+
+    
     .about-grid { gap: 30px; }
     .section-padding { padding: 15px 0 }
     .section-heading { font-size: 1.6rem !important; }
@@ -417,7 +470,7 @@ footer { background-color: var(--bg-card); border-top: 1px solid var(--border-co
     .project-img { height: 130px; }
     .projects-grid { display: flex !important; flex-direction: column !important; gap: 12px !important; grid-template-columns: unset !important; }
     .project-card { display: flex !important; flex-direction: row !important; align-items: center; padding: 10px 12px !important; gap: 14px !important; border-radius: 10px !important; transform: none !important; box-shadow: none !important; }
-    .project-card .project-img { width: 180px !important; height: 100px !important; flex-shrink: 0 !important; border-radius: 8px !important; overflow: hidden !important; margin: 0 !important; position: relative !important; }
+    .project-card .project-img { width: 210px !important; height: 100px !important; flex-shrink: 0 !important; border-radius: 8px !important; overflow: hidden !important; margin: 0 !important; position: relative !important; }
     .project-card .project-img img { width: 100% !important; height: 100% !important; object-fit: cover !important; transform: none !important; }
     .project-card .play-overlay { width: 32px !important; height: 32px !important; transform: translate(-50%, -50%) !important; box-shadow: 0 2px 8px rgba(0,0,0,0.5) !important; top: 55%; left: 65%; background: rgba(255, 255, 255, 0.15) !important; backdrop-filter: blur(8px) !important; -webkit-backdrop-filter: blur(8px) !important; border: 1px solid rgba(255, 255, 255, 0.3) !important; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important; opacity: 1 !important; transform: scale(1) !important; }
     .project-card .play-overlay i { font-size: 12px !important; margin-left: 1px !important; color: #ffffff !important; text-shadow: 0 0 10px rgba(0,0,0,0.5) !important; }
@@ -452,6 +505,9 @@ footer { background-color: var(--bg-card); border-top: 1px solid var(--border-co
         background: var(--primary);
         border-radius: 4px;
     }
+
+ 
+
     /* === END OF VIDEO GRID FIX === */
 
     .media-card { width: 100px; height: 110px; padding: 6px; }
@@ -466,10 +522,11 @@ footer { background-color: var(--bg-card); border-top: 1px solid var(--border-co
     .copy-text { font-size: 0.8rem; }
     .sound-control { gap: 6px; bottom: 15px; right: 15px; }
     .sound-label { font-size: 0.75rem; }
-    .sound-btn { width: 40px; height: 40px; }
+    .sound-btn { width: 44px; height: 44px; }  /* Larger tap area */
     .equalizer { height: 16px; gap: 2px; }
-    .equalizer .bar { height: 8px; width: 3px; }
-    #instant-story { width: 55px; height: 55px; bottom: 15px; left: 15px; }
+    .equalizer .bar { height: 8px; width: 5px; }
+    #instant-story { width: 60px; height: 60px; bottom: 20px; left: 15px; }
+    #instant-story:hover { transform: scale(1.1); }
     .story-image-wrapper { inset: -4px; }
     .story-gradient { inset: -10px; }
     .modal-box { padding: 20px; width: 95%; }
@@ -478,11 +535,11 @@ footer { background-color: var(--bg-card); border-top: 1px solid var(--border-co
 @media (max-width: 480px) {
     .nav-container { height: 56px !important; }
     .nav-menu { top: 56px; height: calc(100vh - 56px); }
-    .hero { padding-top: 80px !important; background-position: 20% top; }
-    .hero-title { font-size: 3rem !important; margin-bottom:8px; margin-top: 3px; }
-    .hero-subtitle { font-size: 1rem !important; }
-    .hero-desc { font-size: 0.85rem !important; }
-    .hero-buttons .btn { padding: 10px; font-size: 0.85rem; }
+    .hero { padding-top: 60px !important; background-position: 20% top; }
+    .hero-title { font-size: 2.8rem !important; margin-bottom: 8px; margin-top: 0; }
+    .hero-subtitle { font-size: 0.9rem !important; }
+    .hero-desc { font-size: 0.8rem !important; }
+    .hero-buttons .btn { padding: 10px; font-size: 0.8rem; }
     .section-heading { font-size: 1.3rem !important; }
     .projects-grid { grid-template-columns: 1fr !important; gap: 10px; }
     .project-img { height: 120px; }
@@ -495,10 +552,40 @@ footer { background-color: var(--bg-card); border-top: 1px solid var(--border-co
     .media-card { width: 80px; height: 90px; }
     .media-img-wrap { width: 50px; height: 30px; }
     .footer-grid { gap: 20px; }
-    .sound-btn { width: 36px; height: 36px; }
+    .sound-btn { width: 40px; height: 40px; }
     .sound-label { display: none; }
-    #instant-story { width: 48px; height: 48px; bottom: 10px; left: 10px; }
+    #instant-story { width: 48px; height: 48px; bottom: 30px; left: 20px; }
 }
+
+/* 🟢 PC ONLY: Fixed width */
 @media (min-width: 769px) {
-    .hero .social-row { justify-content: flex-start !important; }
+    .hero .social-row {
+        justify-content: flex-start !important;
+    }
+
+    .hero-buttons .btn:nth-child(3) {
+        width: 220px !important;            /* Set exact width */
+        padding: 12px 0 !important;         /* Adjust height via top/bottom padding */
+        margin: 12px auto 0 !important;     /* Center it */
+        justify-content: center !important; /* Ensure icon+text are centered inside */
+        font-size: 0.95rem !important;
+    }
+}
+
+/* 🟢 PC ONLY: Perfectly responsive button layout (No % widths) */
+@media (min-width: 769px) {
+
+    /* 2. Align social icons to the left (keeping original design) */
+    .hero .social-row {
+        justify-content: flex-start !important;
+    }
+
+    /* 4. Style the 3rd button (Instagram) naturally - NO STRETCHING */
+    .hero-buttons .btn:nth-child(3) {
+        width: auto !important;       /* Keeps it compact */
+        padding: 12px 24px !important; /* Matches the top two buttons */
+        font-size: 0.95rem !important; /* Matches font size */
+        margin-top: 8px !important;    /* Adds a small gap above */
+        flex-basis: auto !important;
+    }
 }
